@@ -13,7 +13,7 @@ const TipologiaD1 = () => {
     bathrooms: "2",
     description: "Exelente distribución que ofrece espacios amplios y confortables. Ideal para familias que buscan un hogar elegante con todas las comodidades modernas.",
           images: [
-      "/images/Sala23.jpg",  // Primera imagen grande
+      "/images/sala23.jpg",  // Primera imagen grande
       "/images/cocina-03.jpg",       // Segunda imagen
       "/images/habitacion23.jpg", // Tercera imagen
     ],
