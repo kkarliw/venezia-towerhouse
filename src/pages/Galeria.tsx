@@ -46,7 +46,7 @@ const Galeria = () => {
       title: "Habitación Principal",
     },
     {
-      url: "public/images/gym.jpg",
+      url: "/images/gym.jpg",
       category: "Amenidades",
       title: "Gimnasio",
     },
