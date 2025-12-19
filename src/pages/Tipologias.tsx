@@ -1,80 +1,103 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Bed, Maximize, Bath } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Tipologias = () => {
+  const { t, language } = useLanguage();
+
   const tipologias = [
     {
       id: "a",
       name: "Tipología A",
-      subtitle: "Confort y Elegancia",
-      size: "114, m²",
+      subtitle: language === 'es' ? "Confort y Elegancia" : "Comfort & Elegance",
+      size: "114 m²",
       rooms: "3",
       bathrooms: "2",
-      status: "Agotado",
-      description: "Mayor comodidad y funcionalidad en un espacio bien distribuido, acogedor y con acabados de alta calidad que reflejan un estilo de vida moderno.",
+      status: t("tipologias.agotado"),
+      statusKey: "agotado",
+      description: language === 'es' 
+        ? "Mayor comodidad y funcionalidad en un espacio bien distribuido, acogedor y con acabados de alta calidad que reflejan un estilo de vida moderno."
+        : "Greater comfort and functionality in a well-distributed, cozy space with high-quality finishes that reflect a modern lifestyle.",
       image: "/images/habitacion-04.jpg",
     },
     {
       id: "b",
       name: "Tipología B",
-      subtitle: "Espacios eficientes",
+      subtitle: language === 'es' ? "Espacios eficientes" : "Efficient Spaces",
       size: "66,2 m²",
-      rooms: "1 ",
+      rooms: "1",
       bathrooms: "1",
-      status: "Disponible",
-      description: "Compacta pero espaciosa, ideal para profesionales o parejas que buscan un hogar funcional con todas las comodidades en un diseño moderno.",
+      status: t("tipologias.disponible"),
+      statusKey: "disponible",
+      description: language === 'es'
+        ? "Compacta pero espaciosa, ideal para profesionales o parejas que buscan un hogar funcional con todas las comodidades en un diseño moderno."
+        : "Compact yet spacious, ideal for professionals or couples seeking a functional home with all amenities in a modern design.",
       image: "/images/cocina-03.jpg",
     },
     {
       id: "c",
       name: "Tipología C",
-      subtitle: "Espacios Funcionales",
+      subtitle: language === 'es' ? "Espacios Funcionales" : "Functional Spaces",
       size: "60,9 m²",
-      rooms: "1 Habitación",
-      bathrooms: "1 Baño",
-      status: "Últimas Unidades",
-      description: "Diseño compacto y eficiente que maximiza cada metro cuadrado. Perfecto para quienes buscan funcionalidad sin sacrificar estilo.",
+      rooms: "1",
+      bathrooms: "1",
+      status: t("tipologias.ultimasUnidades"),
+      statusKey: "ultimas",
+      description: language === 'es'
+        ? "Diseño compacto y eficiente que maximiza cada metro cuadrado. Perfecto para quienes buscan funcionalidad sin sacrificar estilo."
+        : "Compact and efficient design that maximizes every square meter. Perfect for those seeking functionality without sacrificing style.",
       image: "/images/sala23.jpg",
     },
     {
       id: "d1",
       name: "Tipología D1",
-      subtitle: "Comodidad y Estilo",
+      subtitle: language === 'es' ? "Comodidad y Estilo" : "Comfort & Style",
       size: "78,6 m²",
-      rooms: "2 ",
-      bathrooms: "2 ",
-      status: "Últimas Unidades",
-      description: "Espacios amplios y bien distribuidos, ideales para familias pequeñas o parejas que buscan un hogar con estilo y funcionalidad.",
+      rooms: "2",
+      bathrooms: "2",
+      status: t("tipologias.ultimasUnidades"),
+      statusKey: "ultimas",
+      description: language === 'es'
+        ? "Espacios amplios y bien distribuidos, ideales para familias pequeñas o parejas que buscan un hogar con estilo y funcionalidad."
+        : "Spacious and well-distributed spaces, ideal for small families or couples seeking a home with style and functionality.",
       image: "/images/habitacion23.jpg",
     },
     {
       id: "d2",
       name: "Tipología D2",
-      subtitle: "Confort Moderno",
+      subtitle: language === 'es' ? "Confort Moderno" : "Modern Comfort",
       size: "84 m²",
       rooms: "2",
-      bathrooms: "2 ",
-      status: "Últimas Unidades",
-      description: "Versión extendida con jacuzzi en el balcón. Ideal para quienes buscan lujo y confort en su hogar.",
+      bathrooms: "2",
+      status: t("tipologias.ultimasUnidades"),
+      statusKey: "ultimas",
+      description: language === 'es'
+        ? "Versión extendida con jacuzzi en el balcón. Ideal para quienes buscan lujo y confort en su hogar."
+        : "Extended version with jacuzzi on the balcony. Ideal for those seeking luxury and comfort in their home.",
       image: "/images/sala-comedor-01.jpg",
     },
     {
       id: "e",
       name: "Tipología E",
-      subtitle: "Apartaestudio de Lujo",
+      subtitle: language === 'es' ? "Apartaestudio de Lujo" : "Luxury Studio",
       size: "32,6 m²",
       rooms: "1",
       bathrooms: "1",
-      status: "Disponible",
-      description: "Diseño inteligente que optimiza el espacio para ofrecer comodidad y funcionalidad en un formato compacto, ideal para profesionales o estudiantes.",
+      status: t("tipologias.disponible"),
+      statusKey: "disponible",
+      description: language === 'es'
+        ? "Diseño inteligente que optimiza el espacio para ofrecer comodidad y funcionalidad en un formato compacto, ideal para profesionales o estudiantes."
+        : "Smart design that optimizes space to offer comfort and functionality in a compact format, ideal for professionals or students.",
       image: "/images/cocina23.png",
     },
   ];
 
   const openWhatsApp = (tipoName: string) => {
     const phoneNumber = "573204637230";
-    const message = `Hola, me interesa conocer más sobre la ${tipoName} de Venezia Tower House.`;
+    const message = language === 'es'
+      ? `Hola, me interesa conocer más sobre la ${tipoName} de Venezia Tower House.`
+      : `Hello, I'm interested in learning more about ${tipoName} at Venezia Tower House.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
@@ -93,15 +116,15 @@ const Tipologias = () => {
         </div>
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground mb-4 sm:mb-6 animate-fade-in-up tracking-heading">
-            Nuestras <span className="text-accent">Tipologías</span>
+            {t("tipologias.title1")} <span className="text-accent">{t("tipologias.title2")}</span>
           </h1>
           <p className="text-base sm:text-xl text-primary-foreground/90 max-w-2xl mx-auto animate-fade-in-up font-body">
-            Descubre la tipología perfecta para tu estilo de vida.
+            {t("tipologias.description")}
           </p>
         </div>
       </section>
 
-      {/* Tipologías Sections - Alternating Layout */}
+      {/* Tipologías Sections */}
       <section className="py-16 sm:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-20 sm:space-y-32">
           {tipologias.map((tipo, index) => (
@@ -126,9 +149,9 @@ const Tipologias = () => {
                   {/* Status Badge */}
                   <div className="absolute top-4 sm:top-6 right-4 sm:right-6">
                     <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium backdrop-blur-md ${
-                      tipo.status === "Agotado" 
+                      tipo.statusKey === "agotado" 
                         ? "bg-destructive/90 text-primary-foreground"
-                        : tipo.status === "Últimas Unidades"
+                        : tipo.statusKey === "ultimas"
                         ? "bg-accent/90 text-accent-foreground"
                         : "bg-navy/90 text-primary-foreground"
                     }`}>
@@ -136,7 +159,6 @@ const Tipologias = () => {
                     </span>
                   </div>
 
-                  {/* Decorative Elements */}
                   <div className={`absolute ${index % 2 === 0 ? "-bottom-6 -right-6" : "-bottom-6 -left-6"} w-32 sm:w-48 h-32 sm:h-48 bg-accent/10 rounded-lg -z-10 hidden sm:block`} />
                 </div>
               </div>
@@ -158,21 +180,21 @@ const Tipologias = () => {
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <Maximize className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
                     <div>
-                      <p className="text-xs text-muted-foreground">Superficie</p>
+                      <p className="text-xs text-muted-foreground">{t("tipologias.superficie")}</p>
                       <p className="text-sm sm:text-base font-semibold text-foreground">{tipo.size}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <Bed className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
                     <div>
-                      <p className="text-xs text-muted-foreground">Habitaciones</p>
+                      <p className="text-xs text-muted-foreground">{tipo.rooms === "1" ? t("tipologias.habitacion") : t("tipologias.habitaciones")}</p>
                       <p className="text-sm sm:text-base font-semibold text-foreground">{tipo.rooms}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <Bath className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
                     <div>
-                      <p className="text-xs text-muted-foreground">Baños</p>
+                      <p className="text-xs text-muted-foreground">{t("tipologias.banos")}</p>
                       <p className="text-sm sm:text-base font-semibold text-foreground">{tipo.bathrooms}</p>
                     </div>
                   </div>
@@ -186,7 +208,7 @@ const Tipologias = () => {
                       variant="outline"
                       className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground font-display font-bold uppercase tracking-wide group w-full sm:w-auto"
                     >
-                      Ver Detalles
+                      {t("tipologias.verDetalles")}
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-smooth" />
                     </Button>
                   </Link>
@@ -194,14 +216,14 @@ const Tipologias = () => {
                     size="lg"
                     onClick={() => openWhatsApp(tipo.name)}
                     className={`${
-                      tipo.status === "Agotado"
+                      tipo.statusKey === "agotado"
                         ? "bg-muted text-muted-foreground cursor-not-allowed"
                         : "bg-accent hover:bg-accent/90 text-accent-foreground shadow-gold"
                     } font-display font-bold uppercase tracking-wide group`}
-                    disabled={tipo.status === "Agotado"}
+                    disabled={tipo.statusKey === "agotado"}
                   >
-                    {tipo.status === "A1" ? "Agotado" : "Solicitar Información"}
-                    {tipo.status !== "Agotado" && (
+                    {tipo.statusKey === "agotado" ? t("tipologias.agotado") : t("tipologias.solicitarInfo")}
+                    {tipo.statusKey !== "agotado" && (
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-smooth" />
                     )}
                   </Button>
@@ -211,7 +233,6 @@ const Tipologias = () => {
           ))}
         </div>
       </section>
-
     </div>
   );
 }

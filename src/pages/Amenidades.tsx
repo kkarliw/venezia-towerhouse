@@ -1,36 +1,39 @@
 import { Dumbbell, Waves, Users, Car, ShieldCheck, Trees } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Amenidades = () => {
+  const { t } = useLanguage();
+
   const amenidades = [
     {
       icon: Dumbbell,
-      title: "Salón para Gimnasio",
-      description: "Salón destinado para gimnasio, según dotación personal de los propietarios",
+      title: t("amenidades.gimnasio"),
+      description: t("amenidades.gimnasioDesc"),
     },
     {
       icon: Waves,
-      title: "Piscina",
-      description: "Piscina con vistas espectaculares y área de descanso",
+      title: t("amenidades.piscina"),
+      description: t("amenidades.piscinaAmenidadDesc"),
     },
     {
       icon: Users,
-      title: "Salón de Eventos",
-      description: "Espacios versátiles para reuniones y celebraciones",
+      title: t("amenidades.salonEventos"),
+      description: t("amenidades.salonEventosDesc"),
     },
     {
       icon: Car,
-      title: "Parqueadero",
-      description: "Contará con 3 niveles de parqueadero para tu comodidad",
+      title: t("amenidades.parqueadero"),
+      description: t("amenidades.parqueaderoDesc"),
     },
     {
       icon: ShieldCheck,
-      title: "Seguridad 24/7",
-      description: "Sistema de vigilancia y control de acceso permanente",
+      title: t("amenidades.seguridad"),
+      description: t("amenidades.seguridadDesc"),
     },
     {
       icon: Trees,
-      title: "Zonas Verdes",
-      description: "Parque infantil y áreas ajardinadas para el esparcimiento",
+      title: t("amenidades.zonasVerdes"),
+      description: t("amenidades.zonasVerdesDesc"),
     },
   ];
 
@@ -49,50 +52,46 @@ const Amenidades = () => {
 
         <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <h1 className="text-5xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up">
-            <span className="text-accent">Amenidades</span> Venezia
+            <span className="text-accent">{t("amenidades.heroTitle")}</span>
           </h1>
           <p
             className="text-xl text-primary-foreground/90 max-w-2xl mx-auto animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            Disfruta todo un piso de amenidades diseñadas para tu bienestar y
-            entretenimiento.
+            {t("amenidades.heroDesc")}
           </p>
         </div>
       </section>
 
-{/* Grid Principal */}
-            <section className="py-24 bg-background">
-              <div className="container mx-auto px-4 lg:px-8">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-                  {amenidades.map((amenidad, index) => (
-                    <div
-                      key={index}
-                      className="group animate-fade-in-up"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <div className="relative bg-background p-8 rounded-lg border border-border hover:border-accent transition-smooth overflow-hidden">
-                        
-                        {/* Círculo decorativo */}
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-elegant" />
+      {/* Grid Principal */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            {amenidades.map((amenidad, index) => (
+              <div
+                key={index}
+                className="group animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative bg-background p-8 rounded-lg border border-border hover:border-accent transition-smooth overflow-hidden">
+                  
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-elegant" />
 
-                        {/* CONTENIDO */}
-                        <div className="relative z-10">
-                          <amenidad.icon className="w-14 h-14 text-accent mb-6 group-hover:scale-110 group-hover:rotate-6 transition-smooth" />
-                          <h3 className="text-2xl font-bold text-primary mb-3">
-                            {amenidad.title}
-                          </h3>
-                          <p className="text-muted-foreground leading-relaxed">
-                            {amenidad.description}
-                          </p>
-                        </div>
-
-                      </div>
-                    </div>
-                  ))}
+                  <div className="relative z-10">
+                    <amenidad.icon className="w-14 h-14 text-accent mb-6 group-hover:scale-110 group-hover:rotate-6 transition-smooth" />
+                    <h3 className="text-2xl font-bold text-primary mb-3">
+                      {amenidad.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {amenidad.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </section>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Secciones especiales */}
       <section className="py-24 bg-muted">
@@ -111,32 +110,30 @@ const Amenidades = () => {
 
             <div className="order-1 lg:order-2 space-y-6 animate-slide-in-right">
               <h2 className="text-4xl lg:text-5xl font-bold text-primary">
-                Amenidades <span className="text-accent">Venezia</span>
+                {t("amenidades.zonaSocialTitle")} <span className="text-accent">{t("amenidades.zonaSocialTitle2")}</span>
               </h2>
               <div className="w-24 h-1 bg-accent" />
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Disfruta de vistas espectaculares de la ciudad mientras te
-                relajas en nuestras áreas comunes diseñadas para tu confort y
-                entretenimiento.
+                {t("amenidades.zonaSocialDesc")}
               </p>
 
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-accent rounded-full mt-2" />
                   <span className="text-muted-foreground">
-                    Salón de eventos para tus celebraciones
+                    {t("amenidades.salonEventosItem")}
                   </span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-accent rounded-full mt-2" />
                   <span className="text-muted-foreground">
-                    Terraza panorámica con áreas de descanso
+                    {t("amenidades.terrazaItem")}
                   </span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-accent rounded-full mt-2" />
                   <span className="text-muted-foreground">
-                    Parque infantil para los más pequeños
+                    {t("amenidades.parqueItem")}
                   </span>
                 </li>
               </ul>
@@ -147,34 +144,30 @@ const Amenidades = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 animate-slide-in-left">
               <h2 className="text-4xl lg:text-5xl font-bold text-primary">
-                Piscina & <span className="text-accent">Área Social</span>
+                {t("amenidades.piscinaTitle")} <span className="text-accent">{t("amenidades.piscinaTitle2")}</span>
               </h2>
               <div className="w-24 h-1 bg-accent" />
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Un espacio perfecto para relajarte, tomar el sol o reunirte con
-                tus seres queridos. Ideal para disfrutar del clima cálido de
-                Cartagena.
+                {t("amenidades.piscinaMainDesc")}
               </p>
 
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-accent rounded-full mt-2" />
                   <span className="text-muted-foreground">
-                    Piscina con zona de descanso
+                    {t("amenidades.piscinaItem1")}
                   </span>
                 </li>
-
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-accent rounded-full mt-2" />
                   <span className="text-muted-foreground">
-                    Área social para reuniones
+                    {t("amenidades.piscinaItem2")}
                   </span>
                 </li>
-
                 <li className="flex items-start space-x-3">
                   <span className="w-2 h-2 bg-accent rounded-full mt-2" />
                   <span className="text-muted-foreground">
-                    Ambiente moderno y tranquilo
+                    {t("amenidades.piscinaItem3")}
                   </span>
                 </li>
               </ul>
@@ -191,55 +184,49 @@ const Amenidades = () => {
             </div>
           </div>
 
-       {/* Gimnasio */}
-{/* Gimnasio */}
-<div className="grid lg:grid-cols-2 gap-16 items-center mt-32">
-<div className="space-y-8 animate-slide-in-left mt-5">
-    <h2 className="text-4xl lg:text-5xl font-bold text-primary">
-      Salón para <span className="text-accent">Gimnasio</span>
-    </h2>
-    <div className="w-24 h-1 bg-accent" />
-    <p className="text-lg text-muted-foreground leading-relaxed">
-      Venezia cuenta con un salón destinado para gimnasio en el que los
-      propietarios pueden ubicar su dotación personal. Una vez entregado el
-      proyecto y con administración constituida, se coordinará la instalación
-      de equipos y mejoras futuras.
-    </p>
+          {/* Gimnasio */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center mt-32">
+            <div className="space-y-8 animate-slide-in-left mt-5">
+              <h2 className="text-4xl lg:text-5xl font-bold text-primary">
+                {t("amenidades.gimnasioTitle")} <span className="text-accent">{t("amenidades.gimnasioTitle2")}</span>
+              </h2>
+              <div className="w-24 h-1 bg-accent" />
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {t("amenidades.gimnasioMainDesc")}
+              </p>
 
-    <ul className="space-y-3">
-      <li className="flex items-start space-x-3">
-        <span className="w-2 h-2 bg-accent rounded-full mt-2" />
-        <span className="text-muted-foreground">
-          Espacio adaptable a pesas, cardio y actividades funcionales
-        </span>
-      </li>
+              <ul className="space-y-3">
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-accent rounded-full mt-2" />
+                  <span className="text-muted-foreground">
+                    {t("amenidades.gimnasioItem1")}
+                  </span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-accent rounded-full mt-2" />
+                  <span className="text-muted-foreground">
+                    {t("amenidades.gimnasioItem2")}
+                  </span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="w-2 h-2 bg-accent rounded-full mt-2" />
+                  <span className="text-muted-foreground">
+                    {t("amenidades.gimnasioItem3")}
+                  </span>
+                </li>
+              </ul>
+            </div>
 
-      <li className="flex items-start space-x-3">
-        <span className="w-2 h-2 bg-accent rounded-full mt-2" />
-        <span className="text-muted-foreground">
-          Salón amplio y bien ventilado para tu comodidad
-        </span>
-      </li>
-
-      <li className="flex items-start space-x-3">
-        <span className="w-2 h-2 bg-accent rounded-full mt-2" />
-        <span className="text-muted-foreground">
-          Preparado para dotación según administración futura
-        </span>
-      </li>
-    </ul>
-  </div>
-
-  <div className="animate-slide-in-right">
-    <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-elegant">
-      <img
-        src="/images/gym.jpg"
-        alt="Gimnasio"
-        className="w-full h-full object-cover hover:scale-105 transition-elegant"
-      />
-    </div>
-  </div>
-</div>
+            <div className="animate-slide-in-right">
+              <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-elegant">
+                <img
+                  src="/images/gym.jpg"
+                  alt="Gimnasio"
+                  className="w-full h-full object-cover hover:scale-105 transition-elegant"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

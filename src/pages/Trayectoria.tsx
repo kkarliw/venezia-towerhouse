@@ -1,6 +1,9 @@
 import { Award, Building, CheckCircle, Clock, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { Variants } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { Link } from "react-router-dom";
+
 const fadeInUp: Variants = {
   hidden: {
     opacity: 0,
@@ -51,85 +54,81 @@ const slideInRight = {
 };
 
 const Trayectoria = () => {
+  const { t } = useLanguage();
+
   const projects = [
     {
       year: "2018",
-      name: "Edifício Turín",
-      status: "Entregado",
+      name: t("trayectoria.proyecto1Name"),
+      status: t("trayectoria.entregado"),
       units: 22,
-      description:
-        "Nuestro primer proyecto, estableciendo las bases de calidad y diseño que hoy nos representan.",
+      description: t("trayectoria.proyecto1Desc"),
       image: "images/turin.jpg",
     },
     {
       year: "2019",
-      name: "Edificio Bilbao",
-      status: "Entregado",
+      name: t("trayectoria.proyecto2Name"),
+      status: t("trayectoria.entregado"),
       units: 48,
-      description:
-        "Un paso firme en nuestro crecimiento, mejorando cada detalle constructivo y funcional.",
+      description: t("trayectoria.proyecto2Desc"),
       image: "images/bilbao.jpg",
     },
     {
       year: "2022",
-      name: "Barak Apartamentos",
-      status: "En Entrega",
+      name: t("trayectoria.proyecto3Name"),
+      status: t("trayectoria.enEntrega"),
       units: 36,
-      description:
-        "Un proyecto exitoso que combina diseño contemporáneo y alta funcionalidad.",
+      description: t("trayectoria.proyecto3Desc"),
       image: "images/barak.jpg",
     },
     {
       year: "2024",
-      name: "Venezia Tower House",
-      status: "En Proceso",
+      name: t("trayectoria.proyecto4Name"),
+      status: t("trayectoria.enProceso"),
       units: 50,
-      description:
-        "Nuestro proyecto más ambicioso, elevando los estándares de lujo y confort.",
+      description: t("trayectoria.proyecto4Desc"),
       image: "images/fachada-02.jpg",
     },
   ];
 
   const achievements = [
-    { icon: Building, number: "150+", text: "Unidades Entregadas" },
-    { icon: Award, number: "10+", text: "Años de Experiencia" },
-    { icon: CheckCircle, number: "98%", text: "Satisfacción de Clientes" },
-    { icon: Clock, number: "100%", text: "Entregas a Tiempo" },
+    { icon: Building, number: "150+", text: t("estadisticas.unidadesEntregadas") },
+    { icon: Award, number: "10+", text: t("estadisticas.anosExperiencia") },
+    { icon: CheckCircle, number: "98%", text: t("estadisticas.clientesSatisfechos") },
+    { icon: Clock, number: "100%", text: t("estadisticas.entregasATiempo") },
   ];
 
   const values = [
     {
       icon: Award,
-      title: "Excelencia",
-      description: "Compromiso inquebrantable con la más alta calidad en cada detalle",
+      title: t("trayectoria.excelencia"),
+      description: t("trayectoria.excelenciaDesc"),
     },
     {
       icon: CheckCircle,
-      title: "Confianza",
-      description: "Transparencia y honestidad en cada etapa del proceso",
+      title: t("trayectoria.confianza"),
+      description: t("trayectoria.confianzaDesc"),
     },
     {
       icon: Building,
-      title: "Innovación",
-      description: "Diseños vanguardistas que anticipan las necesidades del futuro",
+      title: t("trayectoria.innovacion"),
+      description: t("trayectoria.innovacionDesc"),
     },
   ];
 
   return (
     <div className="min-h-screen pt-20 bg-background overflow-hidden">
-      {/* HERO SECTION - Optimizado para móvil */}
+      {/* HERO SECTION */}
       <section className="relative h-[60vh] sm:h-[50vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage:
-              "url('/images/zona-social.jpg')",
+            backgroundImage: "url('/images/zona-social.jpg')",
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary/70" />
         </div>
 
-        {/* Partículas flotantes (solo desktop) */}
         <motion.div className="hidden lg:block absolute top-20 left-10">
           <motion.div
             className="w-2 h-2 bg-accent rounded-full opacity-60"
@@ -146,15 +145,15 @@ const Trayectoria = () => {
           viewport={{ once: true }}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Nuestra <span className="text-accent block sm:inline">Trayectoria</span>
+            {t("trayectoria.heroTitle1")} <span className="text-accent block sm:inline">{t("trayectoria.heroTitle2")}</span>
           </h1>
           <p className="text-base sm:text-xl text-white/90 max-w-2xl mx-auto font-light">
-            Más de una década construyendo sueños y superando expectativas
+            {t("trayectoria.heroDesc")}
           </p>
         </motion.div>
       </section>
 
-      {/* NUESTRA HISTORIA - Responsivo */}
+      {/* NUESTRA HISTORIA */}
       <section className="py-16 sm:py-28 bg-background">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-16 items-center px-4 sm:px-4">
           <motion.div
@@ -166,13 +165,14 @@ const Trayectoria = () => {
               className="text-3xl sm:text-5xl lg:text-6xl font-bold text-primary mb-4 sm:mb-6 tracking-tight leading-tight"
               variants={container}
             >
-              {"Nuestra ".split("").map((char, i) => (
+              {t("trayectoria.historiaTitle1").split("").map((char, i) => (
                 <motion.span key={i} variants={letter}>
                   {char}
                 </motion.span>
               ))}
+              {" "}
               <span className="text-accent">
-                {"Historia".split("").map((char, i) => (
+                {t("trayectoria.historiaTitle2").split("").map((char, i) => (
                   <motion.span key={`h-${i}`} variants={letter}>
                     {char}
                   </motion.span>
@@ -193,29 +193,20 @@ const Trayectoria = () => {
             variants={fadeInUp}
           >
             <p className="text-base sm:text-lg text-muted-foreground leading-8 sm:leading-9 text-justify">
-              Desde nuestros inicios en 2016, hemos recorrido un camino marcado por
-              la visión, el compromiso y la pasión por crear espacios que
-              trascienden en el tiempo. Cada proyecto desarrollado ha sido una
-              oportunidad para perfeccionar nuestros procesos, elevar nuestros
-              estándares de diseño y responder con excelencia.
+              {t("trayectoria.historiaDesc1")}
               <br />
               <br />
-              Nuestra dedicación a la calidad constructiva, la estética
-              arquitectónica y la satisfacción del cliente nos ha permitido
-              consolidarnos como referente en Cartagena, con más de 150 unidades
-              residenciales entregadas.
+              {t("trayectoria.historiaDesc2")}
             </p>
 
             <div className="mt-8">
               <div className="w-16 h-px bg-accent mb-4" />
-              <p className="text-xs sm:text-sm tracking-widest text-primary font-medium">
-              </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* PROYECTOS DESTACADOS - Mejorado para móvil */}
+      {/* PROYECTOS DESTACADOS */}
       <section className="py-16 sm:py-24 bg-muted">
         <div className="max-w-6xl mx-auto px-4">
           <motion.h2
@@ -225,7 +216,7 @@ const Trayectoria = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            Proyectos <span className="text-accent">Destacados</span>
+            {t("trayectoria.proyectosDestacados")} <span className="text-accent">{t("trayectoria.destacados")}</span>
           </motion.h2>
 
           <div className="space-y-12 sm:space-y-24">
@@ -253,7 +244,6 @@ const Trayectoria = () => {
                       />
                     </div>
 
-                    {/* Year Badge */}
                     <motion.div
                       className="absolute top-4 sm:top-6 left-4 sm:left-6"
                       initial={{ scale: 0, opacity: 0 }}
@@ -268,7 +258,6 @@ const Trayectoria = () => {
                       </div>
                     </motion.div>
 
-                    {/* Status Badge */}
                     <motion.div
                       className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6"
                       initial={{ opacity: 0, y: 10 }}
@@ -278,7 +267,7 @@ const Trayectoria = () => {
                     >
                       <span
                         className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium backdrop-blur-md ${
-                          project.status === "Entregado"
+                          project.status === t("trayectoria.entregado")
                             ? "bg-primary/90 text-white"
                             : "bg-accent/90 text-primary"
                         }`}
@@ -309,18 +298,18 @@ const Trayectoria = () => {
                       <p className="text-2xl sm:text-3xl font-bold text-accent">
                         {project.units}
                       </p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Unidades</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{t("trayectoria.unidades")}</p>
                     </div>
                     <div className="w-px h-10 sm:h-12 bg-accent/30" />
                     <div>
                       <p className="text-base sm:text-lg font-semibold text-primary">
                         {project.status}
                       </p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Estado Actual</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{t("trayectoria.estadoActual")}</p>
                     </div>
                   </div>
 
-                  {project.status === "Entregado" && (
+                  {project.status === t("trayectoria.entregado") && (
                     <motion.div
                       className="flex items-center gap-2 text-primary pt-2 sm:pt-4"
                       initial={{ opacity: 0, x: -10 }}
@@ -330,7 +319,7 @@ const Trayectoria = () => {
                     >
                       <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
                       <span className="font-medium text-sm sm:text-base">
-                        Proyecto Concluido Exitosamente
+                        {t("trayectoria.proyectoConcluido")}
                       </span>
                     </motion.div>
                   )}
@@ -341,9 +330,8 @@ const Trayectoria = () => {
         </div>
       </section>
 
-      {/* LOGROS - Premium y responsive */}
+      {/* LOGROS */}
       <section className="py-20 sm:py-32 bg-background relative overflow-hidden">
-        {/* Fondo decorativo */}
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl"
           animate={{ y: [0, 40, 0] }}
@@ -359,7 +347,7 @@ const Trayectoria = () => {
             className="mb-16 sm:mb-20"
           >
             <h2 className="text-3xl sm:text-5xl font-bold text-center">
-              Nuestros <span className="text-accent">Logros</span>
+              {t("trayectoria.logrosTitle")} <span className="text-accent">{t("trayectoria.logrosTitle2")}</span>
             </h2>
           </motion.div>
 
@@ -408,7 +396,7 @@ const Trayectoria = () => {
         </div>
       </section>
 
-      {/* VALORES - Premium y responsive */}
+      {/* VALORES */}
       <section className="py-20 sm:py-32 bg-muted relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <motion.div
@@ -419,7 +407,7 @@ const Trayectoria = () => {
             className="mb-16 sm:mb-20"
           >
             <h2 className="text-3xl sm:text-5xl font-bold text-center">
-              Nuestros <span className="text-accent">Valores</span>
+              {t("trayectoria.valoresTitle")} <span className="text-accent">{t("trayectoria.valoresTitle2")}</span>
             </h2>
           </motion.div>
 
@@ -461,19 +449,9 @@ const Trayectoria = () => {
                       {value.title}
                     </h3>
 
-                    <div className="w-10 sm:w-12 h-0.5 bg-accent mx-auto mb-4 sm:mb-4 rounded-full" />
-
-                    <p className="text-muted-foreground text-center text-xs sm:text-sm leading-relaxed flex-grow">
+                    <p className="text-muted-foreground text-center text-sm sm:text-base leading-relaxed flex-grow">
                       {value.description}
                     </p>
-
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
-                    />
                   </div>
                 </motion.div>
               );
@@ -482,49 +460,45 @@ const Trayectoria = () => {
         </div>
       </section>
 
-      {/* CTA SECTION - Premium y móvil optimizado */}
-      <section className="py-20 sm:py-32 bg-gradient-to-b from/100 text-white relative overflow-hidden">
+      {/* CTA */}
+      <section className="py-20 sm:py-32 bg-gradient-to-br from-primary to-primary/90 relative overflow-hidden">
         <motion.div
-          className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
-          animate={{ y: [-20, 20, -20] }}
-          transition={{ duration: 6, repeat: Infinity }}
+          className="absolute top-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+          animate={{ y: [0, 50, 0] }}
+          transition={{ duration: 10, repeat: Infinity }}
         />
 
-        <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">  
-          <motion.h2
-            className="text-3xl sm:text-5xl font-bold mb-6 sm:mb-8"
-            initial="hidden"
-            whileInView="visible"
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
           >
-            ¿Listo para <span className="text-accent">Construir tu Futuro</span> con Nosotros?
-          </motion.h2>
+            <Sparkles className="w-12 h-12 text-accent mx-auto mb-6" />
 
-          <motion.p
-            className="text-base sm:text-lg mb-8 sm:mb-12 text-blue/90"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ delay: 0.2 }}
-          >
-Nuestro propósito es construir relaciones basadas en la confianza, para que juntos demos vida al hogar que mereces.          </motion.p>
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+              {t("trayectoria.ctaTitle")} <span className="text-accent">{t("trayectoria.ctaTitle2")}</span>
+            </h2>
 
-          <motion.a
-            href="/contacto"
-            className="inline-block bg-accent hover:bg-accent/90 text-blue font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ delay: 0.4 }}
-          >
-            Contáctanos
-          </motion.a>
+            <p className="text-lg sm:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              {t("trayectoria.ctaDesc")}
+            </p>
+
+            <Link to="/agendar-visita">
+              <motion.button
+                className="px-8 sm:px-12 py-4 bg-accent text-primary font-bold text-lg rounded-lg hover:bg-accent/90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t("trayectoria.agendarVisita")}
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+            </Link>
+          </motion.div>
         </div>
       </section>
-        </div>
+    </div>
   );
 };
 
