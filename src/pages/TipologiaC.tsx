@@ -1,42 +1,48 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Maximize, Bed, Bath, Check, FileText } from "lucide-react";
+import { ArrowLeft, Maximize, Bed, Bath, Check } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
+
 const planoTipologiaC = "/images/planta-tipo-c1.png";
 
 const TipologiaC = () => {
+  const { t } = useLanguage();
+
   const tipologia = {
     id: "c",
-    name: "Tipología C",
-    subtitle: "Espacios Funcionales",
+    name: t("tipologiaDetail.tipologiaC.name"),
+    subtitle: t("tipologiaDetail.tipologiaC.subtitle"),
     price: "$493.290.000",
-    status: "Últimas Unidades",
+    status: t("tipologiaDetail.tipologiaC.status"),
     size: "60,9",
     rooms: "1",
     bathrooms: "1",
-    description: "Diseño compacto y eficiente que maximiza cada metro cuadrado. Perfecto para quienes buscan funcionalidad sin sacrificar estilo.",
-         images: [
-      "/images/sala23.jpg",  // Primera imagen grande
-      "/images/cocina-03.jpg",       // Segunda imagen
-      "/images/habitacion-04.jpg", // Tercera imagen
-    ],
-    features: [
-      "Gran sala con amplios ventanales",
-      "Cocina abierta estilo gourmet",
-      "Habitación con closet integrado",
-      "Habitación principal con baño privado",
-      "Baño auxiliar para visitas",
-      "Cuarto de lavado",
-      "Terraza de 7,2 m²",
-      "Espacio para aire acondicionado",
-    ],
-    finishes: [
-    "Pisos en porcelanato formato 60x60",
-  "Puertas principales y de habitaciones de piso a techo",
-  "Puntos para aire acondicionado",
-  "Cocina con gabinetes inferiores y superiores",
-  "Estufa con campana de extracción de calor",
-  "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
+    description: t("tipologiaDetail.tipologiaC.description"),
+    images: [
+      "/images/sala23.jpg",
+      "/images/cocina-03.jpg",
+      "/images/habitacion-04.jpg",
     ],
   };
+
+  const features = [
+    t("tipologiaDetail.tipologiaC.features.0"),
+    t("tipologiaDetail.tipologiaC.features.1"),
+    t("tipologiaDetail.tipologiaC.features.2"),
+    t("tipologiaDetail.tipologiaC.features.3"),
+    t("tipologiaDetail.tipologiaC.features.4"),
+    t("tipologiaDetail.tipologiaC.features.5"),
+    t("tipologiaDetail.tipologiaC.features.6"),
+    t("tipologiaDetail.tipologiaC.features.7"),
+  ];
+
+  const finishes = [
+    t("tipologiaDetail.tipologiaC.finishes.0"),
+    t("tipologiaDetail.tipologiaC.finishes.1"),
+    t("tipologiaDetail.tipologiaC.finishes.2"),
+    t("tipologiaDetail.tipologiaC.finishes.3"),
+    t("tipologiaDetail.tipologiaC.finishes.4"),
+    t("tipologiaDetail.tipologiaC.finishes.5"),
+  ];
 
   return (
     <div className="min-h-screen pt-20 bg-background">
@@ -45,7 +51,7 @@ const TipologiaC = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <Link to="/tipologias" className="inline-flex items-center text-accent hover:text-accent/80 transition-smooth mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            <span>Volver a Tipologías</span>
+            <span>{t("tipologiaDetail.volverTipologias")}</span>
           </Link>
           
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -58,7 +64,7 @@ const TipologiaC = () => {
                 {tipologia.status}
               </span>
               <div className="text-right">
-                <p className="text-sm text-muted-foreground">Desde</p>
+                <p className="text-sm text-muted-foreground">{t("tipologiaDetail.desde")}</p>
                 <p className="text-3xl font-bold text-accent">{tipologia.price} COP</p>
               </div>
             </div>
@@ -104,17 +110,17 @@ const TipologiaC = () => {
             <div className="text-center p-6 bg-background rounded-lg shadow-elegant">
               <Maximize className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.size}</p>
-              <p className="text-sm text-muted-foreground">m² totales</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.mTotales")}</p>
             </div>
             <div className="text-center p-3 bg-background rounded-lg shadow-elegant">
               <Bed className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.rooms}</p>
-              <p className="text-sm text-muted-foreground">Habitaciones</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.habitaciones")}</p>
             </div>
             <div className="text-center p-3 bg-background rounded-lg shadow-elegant">
               <Bath className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.bathrooms}</p>
-              <p className="text-sm text-muted-foreground">Baños</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.banos")}</p>
             </div>
           </div>
         </div>
@@ -124,21 +130,21 @@ const TipologiaC = () => {
       <section className="py-12">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-6">Descripción</h2>
+            <h2 className="text-3xl font-display font-bold text-foreground mb-6">{t("tipologiaDetail.descripcion")}</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">{tipologia.description}</p>
           </div>
         </div>
       </section>
 
       {/* Floor Plan */}
-            <section className="py-12 bg-muted/30">
+      <section className="py-12 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">Plano Arquitectónico</h2>
+            <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">{t("tipologiaDetail.planoArquitectonico")}</h2>
             <div className="bg-background rounded-lg shadow-elegant overflow-hidden">
               <img 
                 src={planoTipologiaC}
-                alt={`Plano arquitectónico - ${tipologia.name}`}
+                alt={`${t("tipologiaDetail.planoArquitectonico")} - ${tipologia.name}`}
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -151,9 +157,9 @@ const TipologiaC = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div>
-              <h2 className="text-2xl font-display font-bold text-foreground mb-6">Características</h2>
+              <h2 className="text-2xl font-display font-bold text-foreground mb-6">{t("tipologiaDetail.caracteristicas")}</h2>
               <ul className="space-y-3">
-                {tipologia.features.map((feature, index) => (
+                {features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{feature}</span>
@@ -162,9 +168,9 @@ const TipologiaC = () => {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-display font-bold text-foreground mb-6">Acabados de Lujo</h2>
+              <h2 className="text-2xl font-display font-bold text-foreground mb-6">{t("tipologiaDetail.acabadosLujo")}</h2>
               <ul className="space-y-3">
-                {tipologia.finishes.map((finish, index) => (
+                {finishes.map((finish, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{finish}</span>
@@ -175,7 +181,6 @@ const TipologiaC = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };

@@ -1,39 +1,44 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Maximize, Bed, Bath, Check, FileText } from "lucide-react";
-import planoTipologiaE from "/images/planta-tipo-e1.png";
+import { ArrowLeft, Maximize, Bed, Bath, Check } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
+
+const planoTipologiaE = "/images/planta-tipo-e1.png";
 
 const TipologiaE = () => {
+  const { t } = useLanguage();
+
   const tipologia = {
     id: "e",
-    name: "Tipología E",
-    subtitle: "Apartaestudio",
+    name: t("tipologiaDetail.tipologiaE.name"),
+    subtitle: t("tipologiaDetail.tipologiaE.subtitle"),
     price: "$277.100.000",
-    currency: "COP",
-    status: "Disponible",
+    status: t("tipologiaDetail.tipologiaE.status"),
     size: "32,6",
     rooms: "1",
     bathrooms: "1",
-    description: "Tu mejor refugio en la ciudad. Este apartaestudio ofrece un diseño compacto pero funcional, ideal para quienes buscan comodidad y estilo en un espacio reducido. Perfecto para profesionales o estudiantes que valoran la ubicación y el acceso a todas las amenidades del edificio.",
-          images: [
+    description: t("tipologiaDetail.tipologiaE.description"),
+    images: [
       "/images/sala23.jpg",
       "/images/cocina-03.jpg",
       "/images/habitacion23.jpg",
     ],
-    features: [
-      "Apartaestudio con diseño inteligente",
-      "Terraza privada de 7,2 m²",
-      "Baño privado con acabados modernos",
-      "Cocina practica y funcional",
-    ],
-    finishes: [
-  "Pisos en porcelanato formato 60x60",
-  "Puertas principales y de habitaciones de piso a techo",
-  "Puntos para aire acondicionado",
-  "Cocina con gabinetes inferiores y superiores",
-  "Estufa con campana de extracción de calor",
-  "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
-    ],
   };
+
+  const features = [
+    t("tipologiaDetail.tipologiaE.features.0"),
+    t("tipologiaDetail.tipologiaE.features.1"),
+    t("tipologiaDetail.tipologiaE.features.2"),
+    t("tipologiaDetail.tipologiaE.features.3"),
+  ];
+
+  const finishes = [
+    t("tipologiaDetail.tipologiaE.finishes.0"),
+    t("tipologiaDetail.tipologiaE.finishes.1"),
+    t("tipologiaDetail.tipologiaE.finishes.2"),
+    t("tipologiaDetail.tipologiaE.finishes.3"),
+    t("tipologiaDetail.tipologiaE.finishes.4"),
+    t("tipologiaDetail.tipologiaE.finishes.5"),
+  ];
 
   return (
     <div className="min-h-screen pt-20 bg-background">
@@ -42,7 +47,7 @@ const TipologiaE = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <Link to="/tipologias" className="inline-flex items-center text-accent hover:text-accent/80 transition-smooth mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            <span>Volver a Tipologías</span>
+            <span>{t("tipologiaDetail.volverTipologias")}</span>
           </Link>
           
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -54,8 +59,8 @@ const TipologiaE = () => {
               <span className="px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-foreground">
                 {tipologia.status}
               </span>
-               <div className="text-right">
-                <p className="text-sm text-muted-foreground">Desde</p>
+              <div className="text-right">
+                <p className="text-sm text-muted-foreground">{t("tipologiaDetail.desde")}</p>
                 <p className="text-4xl font-bold text-accent mb-2">{tipologia.price} COP</p>
               </div>
             </div>
@@ -101,17 +106,17 @@ const TipologiaE = () => {
             <div className="text-center p-6 bg-background rounded-lg shadow-elegant">
               <Maximize className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.size}</p>
-              <p className="text-sm text-muted-foreground">m² totales</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.mTotales")}</p>
             </div>
             <div className="text-center p-3 bg-background rounded-lg shadow-elegant">
               <Bed className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.rooms}</p>
-              <p className="text-sm text-muted-foreground">Habitaciones</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.habitaciones")}</p>
             </div>
             <div className="text-center p-3 bg-background rounded-lg shadow-elegant">
               <Bath className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.bathrooms}</p>
-              <p className="text-sm text-muted-foreground">Baños</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.banos")}</p>
             </div>
           </div>
         </div>
@@ -121,21 +126,21 @@ const TipologiaE = () => {
       <section className="py-12">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-foreground mb-6">El Máximo Exponente del Lujo</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-6">{t("tipologiaDetail.maximoExponente")}</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">{tipologia.description}</p>
           </div>
         </div>
       </section>
 
       {/* Floor Plan */}
-            <section className="py-12 bg-muted/30">
+      <section className="py-12 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">Plano Arquitectónico</h2>
+            <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">{t("tipologiaDetail.planoArquitectonico")}</h2>
             <div className="bg-background rounded-lg shadow-elegant overflow-hidden">
               <img 
                 src={planoTipologiaE}
-                alt={`Plano arquitectónico - ${tipologia.name}`}
+                alt={`${t("tipologiaDetail.planoArquitectonico")} - ${tipologia.name}`}
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -148,9 +153,9 @@ const TipologiaE = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6">Características Exclusivas</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-6">{t("tipologiaDetail.caracteristicasExclusivas")}</h2>
               <ul className="space-y-3">
-                {tipologia.features.map((feature, index) => (
+                {features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{feature}</span>
@@ -159,9 +164,9 @@ const TipologiaE = () => {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6">Acabados de Ultra Lujo</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-6">{t("tipologiaDetail.acabadosUltraLujo")}</h2>
               <ul className="space-y-3">
-                {tipologia.finishes.map((finish, index) => (
+                {finishes.map((finish, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{finish}</span>
@@ -177,14 +182,14 @@ const TipologiaE = () => {
       <section className="py-16 bg-gradient-to-r from-primary via-primary/95 to-primary/90">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
-            ¿Te interesa esta tipología?
+            {t("tipologiaDetail.teInteresa")}
           </h3>
           <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-            Contáctanos para agendar una visita y conocer más detalles
+            {t("tipologiaDetail.contactanos")}
           </p>
           <Link to="/agendar-visita">
             <button className="px-8 py-4 bg-accent text-primary font-bold rounded-lg hover:bg-accent/90 transition-all duration-300 text-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
-              Agendar Visita
+              {t("tipologiaDetail.agendarVisita")}
             </button>
           </Link>
         </div>
