@@ -28,7 +28,7 @@ const letter = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: { ease: "easeOut", duration: 0.4 },
+    transition: { ease: [0.4, 0, 0.2, 1] as const, duration: 0.4 },
   },
 };
 
@@ -37,7 +37,7 @@ const slideInLeft = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as const },
   },
 };
 
@@ -46,7 +46,7 @@ const slideInRight = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as const },
   },
 };
 

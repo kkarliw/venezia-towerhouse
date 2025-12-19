@@ -3,11 +3,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "./i18n/LanguageContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import BrochureButton from "./components/BrochureButton";
 import ScrollToTop from "./components/ScrollToTop";
+import LanguageDetectionModal from "./components/LanguageDetectionModal";
 import Index from "./pages/Index";
 import Proyecto from "./pages/Proyecto";
 import Amenidades from "./pages/Amenidades";
@@ -29,39 +31,42 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/proyecto" element={<Proyecto />} />
-              <Route path="/amenidades" element={<Amenidades />} />
-              <Route path="/tipologias" element={<Tipologias />} />
-              <Route path="/tipologias/a" element={<TipologiaA />} />
-              <Route path="/tipologias/b" element={<TipologiaB />} />
-              <Route path="/tipologias/c" element={<TipologiaC />} />
-              <Route path="/tipologias/d1" element={<TipologiaD1 />} />
-              <Route path="/tipologias/d2" element={<TipologiaD2 />} />
-              <Route path="/tipologias/e" element={<TipologiaE />} />
-              <Route path="/ubicacion" element={<Ubicacion />} />
-              <Route path="/trayectoria" element={<Trayectoria />} />
-              <Route path="/galeria" element={<Galeria />} />
-              <Route path="/contacto" element={<Contacto />} />
-              <Route path="/agendar-visita" element={<AgendarVisita />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-          <WhatsAppButton />
-          <BrochureButton />
-        </div>
-      </BrowserRouter>
-    </TooltipProvider>
+    <LanguageProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <LanguageDetectionModal />
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/proyecto" element={<Proyecto />} />
+                <Route path="/amenidades" element={<Amenidades />} />
+                <Route path="/tipologias" element={<Tipologias />} />
+                <Route path="/tipologias/a" element={<TipologiaA />} />
+                <Route path="/tipologias/b" element={<TipologiaB />} />
+                <Route path="/tipologias/c" element={<TipologiaC />} />
+                <Route path="/tipologias/d1" element={<TipologiaD1 />} />
+                <Route path="/tipologias/d2" element={<TipologiaD2 />} />
+                <Route path="/tipologias/e" element={<TipologiaE />} />
+                <Route path="/ubicacion" element={<Ubicacion />} />
+                <Route path="/trayectoria" element={<Trayectoria />} />
+                <Route path="/galeria" element={<Galeria />} />
+                <Route path="/contacto" element={<Contacto />} />
+                <Route path="/agendar-visita" element={<AgendarVisita />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+            <WhatsAppButton />
+            <BrochureButton />
+          </div>
+        </BrowserRouter>
+      </TooltipProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 
