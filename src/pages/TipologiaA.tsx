@@ -1,42 +1,48 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Maximize, Bed, Bath, Check } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
+
 const planoTipologiaA = "/images/planta-tipo-a1.png";
 
 const TipologiaA = () => {
-const tipologia = {
+  const { t } = useLanguage();
+
+  const tipologia = {
     id: "a",
-    name: "Tipología A1",
-    subtitle: "Para mayor comodidad",
+    name: t("tipologiaDetail.tipologiaA.name"),
+    subtitle: t("tipologiaDetail.tipologiaA.subtitle"),
     price: "$925.020.000",
-    status: "Agotado",
+    status: t("tipologiaDetail.tipologiaA.status"),
     size: "114,2",
     rooms: "3",
     bathrooms: "2",
-    description: "Gran diseño y distribución que ofrece espacios amplios y confortables. Ideal para familias que buscan un hogar elegante con todas las comodidades modernas.",
-      images: [
-        "/images/sala-comedor-01.jpg",
+    description: t("tipologiaDetail.tipologiaA.description"),
+    images: [
+      "/images/sala-comedor-01.jpg",
       "/images/habitacion-04.jpg",
       "/images/cocina-03.jpg",
     ],
-    features: [
-      "Gran sala con amplios ventanales",
-      "Cocina abierta estilo gourmet",
-      "Habitaciones con closet integrado",
-      "Habitación principal con baño privado y terrraza privada",
-      "Baño completo adicional",
-      "Cuarto de lavado",
-      "Terraza de 24,7 m²",
-      "Espacio para aire acondicionado",
-    ],
-    finishes: [
-  "Pisos en porcelanato formato 60x60",
-  "Puertas principales y de habitaciones de piso a techo",
-  "Puntos para aire acondicionado",
-  "Cocina con gabinetes inferiores y superiores",
-  "Estufa con campana de extracción de calor",
-  "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
-    ],
   };
+
+  const features = [
+    t("tipologiaDetail.tipologiaA.features.0"),
+    t("tipologiaDetail.tipologiaA.features.1"),
+    t("tipologiaDetail.tipologiaA.features.2"),
+    t("tipologiaDetail.tipologiaA.features.3"),
+    t("tipologiaDetail.tipologiaA.features.4"),
+    t("tipologiaDetail.tipologiaA.features.5"),
+    t("tipologiaDetail.tipologiaA.features.6"),
+    t("tipologiaDetail.tipologiaA.features.7"),
+  ];
+
+  const finishes = [
+    t("tipologiaDetail.tipologiaA.finishes.0"),
+    t("tipologiaDetail.tipologiaA.finishes.1"),
+    t("tipologiaDetail.tipologiaA.finishes.2"),
+    t("tipologiaDetail.tipologiaA.finishes.3"),
+    t("tipologiaDetail.tipologiaA.finishes.4"),
+    t("tipologiaDetail.tipologiaA.finishes.5"),
+  ];
 
   return (
     <div className="min-h-screen pt-20 bg-background">
@@ -45,7 +51,7 @@ const tipologia = {
         <div className="container mx-auto px-4 lg:px-8">
           <Link to="/tipologias" className="inline-flex items-center text-accent hover:text-accent/80 transition-smooth mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            <span>Volver a Tipologías</span>
+            <span>{t("tipologiaDetail.volverTipologias")}</span>
           </Link>
           
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -58,7 +64,7 @@ const tipologia = {
                 {tipologia.status}
               </span>
               <div className="text-right">
-                <p className="text-sm text-muted-foreground">Desde</p>
+                <p className="text-sm text-muted-foreground">{t("tipologiaDetail.desde")}</p>
                 <p className="text-3xl font-bold text-accent">{tipologia.price} COP</p>
               </div>
             </div>
@@ -98,23 +104,23 @@ const tipologia = {
       </section>
 
       {/* Specifications */}
-          <section className="py-12 bg-muted/30">
+      <section className="py-12 bg-muted/30">
         <div className="container mx-auto px-3 lg:px-8">
           <div className="grid grid-cols-3 gap-3 max-w-2xl mx-auto">
             <div className="text-center p-6 bg-background rounded-lg shadow-elegant">
               <Maximize className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.size}</p>
-              <p className="text-sm text-muted-foreground">m² totales</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.mTotales")}</p>
             </div>
             <div className="text-center p-3 bg-background rounded-lg shadow-elegant">
               <Bed className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.rooms}</p>
-              <p className="text-sm text-muted-foreground">Habitaciones</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.habitaciones")}</p>
             </div>
             <div className="text-center p-3 bg-background rounded-lg shadow-elegant">
               <Bath className="w-8 h-8 text-accent mx-auto mb-3" />
               <p className="text-3xl font-bold text-foreground">{tipologia.bathrooms}</p>
-              <p className="text-sm text-muted-foreground">Baños</p>
+              <p className="text-sm text-muted-foreground">{t("tipologiaDetail.banos")}</p>
             </div>
           </div>
         </div>
@@ -124,7 +130,7 @@ const tipologia = {
       <section className="py-12">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-6">Descripción</h2>
+            <h2 className="text-3xl font-display font-bold text-foreground mb-6">{t("tipologiaDetail.descripcion")}</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">{tipologia.description}</p>
           </div>
         </div>
@@ -134,11 +140,11 @@ const tipologia = {
       <section className="py-12 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">Plano Arquitectónico</h2>
+            <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">{t("tipologiaDetail.planoArquitectonico")}</h2>
             <div className="bg-background rounded-lg shadow-elegant overflow-hidden">
               <img 
                 src={planoTipologiaA}
-                alt={`Plano arquitectónico - ${tipologia.name}`}
+                alt={`${t("tipologiaDetail.planoArquitectonico")} - ${tipologia.name}`}
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -151,9 +157,9 @@ const tipologia = {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div>
-              <h2 className="text-2xl font-display font-bold text-foreground mb-6">Características</h2>
+              <h2 className="text-2xl font-display font-bold text-foreground mb-6">{t("tipologiaDetail.caracteristicas")}</h2>
               <ul className="space-y-3">
-                {tipologia.features.map((feature, index) => (
+                {features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{feature}</span>
@@ -162,9 +168,9 @@ const tipologia = {
               </ul>
             </div>
             <div>
-              <h2 className="text-2xl font-display font-bold text-foreground mb-6">Acabados de Lujo</h2>
+              <h2 className="text-2xl font-display font-bold text-foreground mb-6">{t("tipologiaDetail.acabadosLujo")}</h2>
               <ul className="space-y-3">
-                {tipologia.finishes.map((finish, index) => (
+                {finishes.map((finish, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{finish}</span>
@@ -175,7 +181,6 @@ const tipologia = {
           </div>
         </div>
       </section>
-
     </div>
   );
 };

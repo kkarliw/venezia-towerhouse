@@ -340,5 +340,160 @@
   "seo": {
     "title": "Venezia Tower House | Luxury Apartments in Cartagena, Colombia",
     "description": "Venezia Tower House offers luxury apartments in Cartagena with modern architecture, premium amenities, and a privileged beachfront location. Ideal for living or investment."
+  },
+  "tipologiaDetail": {
+    "volverTipologias": "Back to Floor Plans",
+    "desde": "From",
+    "descripcion": "Description",
+    "planoArquitectonico": "Architectural Floor Plan",
+    "caracteristicas": "Features",
+    "acabadosLujo": "Luxury Finishes",
+    "caracteristicasExclusivas": "Exclusive Features",
+    "acabadosUltraLujo": "Ultra-Luxury Finishes",
+    "maximoExponente": "The Ultimate in Luxury Living",
+    "mTotales": "sq ft total",
+    "habitaciones": "Bedrooms",
+    "banos": "Bathrooms",
+    "teInteresa": "Interested in this floor plan?",
+    "contactanos": "Contact us to schedule a visit and learn more details",
+    "agendarVisita": "Schedule Visit",
+    "tipologiaA": {
+      "name": "Floor Plan A1",
+      "subtitle": "For Maximum Comfort",
+      "status": "Sold Out",
+      "description": "Excellent design and layout offering spacious and comfortable spaces. Ideal for families seeking an elegant home with all modern amenities.",
+      "features": [
+        "Large living room with expansive windows",
+        "Open gourmet-style kitchen",
+        "Bedrooms with built-in closets",
+        "Master bedroom with private bathroom and private terrace",
+        "Additional full bathroom",
+        "Laundry room",
+        "Terrace of 24.7 m² (266 sq ft)",
+        "Air conditioning space"
+      ],
+      "finishes": [
+        "60x60 porcelain tile flooring",
+        "Floor-to-ceiling main and bedroom doors",
+        "Air conditioning outlets",
+        "Kitchen with upper and lower cabinets",
+        "Stove with heat extraction hood",
+        "Fully equipped bathrooms with tiles, accessories, and tempered glass in wet areas"
+      ]
+    },
+    "tipologiaB": {
+      "name": "Floor Plan B",
+      "subtitle": "Comfortable Spaces",
+      "status": "Available",
+      "description": "Ideal option for those seeking a perfect balance between functionality and style. This floor plan offers well-distributed spaces, a spacious living area, and a balcony with panoramic views, creating a cozy and modern atmosphere.",
+      "features": [
+        "Expanded living room with great lighting",
+        "Fully equipped kitchen with breakfast bar",
+        "Spacious bedroom with built-in closet",
+        "Modern full bathroom",
+        "Balcony with panoramic views of 13.5 m² (145 sq ft)",
+        "Air conditioning space"
+      ],
+      "finishes": [
+        "60x60 porcelain tile flooring",
+        "Floor-to-ceiling main and bedroom doors",
+        "Air conditioning outlets",
+        "Kitchen with upper and lower cabinets",
+        "Stove with heat extraction hood",
+        "Fully equipped bathrooms with tiles, accessories, and tempered glass in wet areas"
+      ]
+    },
+    "tipologiaC": {
+      "name": "Floor Plan C",
+      "subtitle": "Functional Spaces",
+      "status": "Last Units",
+      "description": "Compact and efficient design that maximizes every square foot. Perfect for those seeking functionality without sacrificing style.",
+      "features": [
+        "Large living room with expansive windows",
+        "Open gourmet-style kitchen",
+        "Bedroom with built-in closet",
+        "Master bedroom with private bathroom",
+        "Guest bathroom",
+        "Laundry room",
+        "Terrace of 7.2 m² (77 sq ft)",
+        "Air conditioning space"
+      ],
+      "finishes": [
+        "60x60 porcelain tile flooring",
+        "Floor-to-ceiling main and bedroom doors",
+        "Air conditioning outlets",
+        "Kitchen with upper and lower cabinets",
+        "Stove with heat extraction hood",
+        "Fully equipped bathrooms with tiles, accessories, and tempered glass in wet areas"
+      ]
+    },
+    "tipologiaD1": {
+      "name": "Floor Plan D1",
+      "subtitle": "Family Luxury",
+      "status": "Available",
+      "description": "Excellent layout offering spacious and comfortable spaces. Ideal for families seeking an elegant home with all modern amenities.",
+      "features": [
+        "Large living room with expansive windows",
+        "Open gourmet-style kitchen",
+        "Bedrooms with built-in closets",
+        "Master bedroom with private bathroom",
+        "Additional full bathroom",
+        "Laundry room",
+        "Terrace of 12.6 m² (136 sq ft) with optional jacuzzi",
+        "Air conditioning space"
+      ],
+      "finishes": [
+        "60x60 porcelain tile flooring",
+        "Floor-to-ceiling main and bedroom doors",
+        "Air conditioning outlets",
+        "Kitchen with upper and lower cabinets",
+        "Stove with heat extraction hood",
+        "Fully equipped bathrooms with tiles, accessories, and tempered glass in wet areas"
+      ]
+    },
+    "tipologiaD2": {
+      "name": "Floor Plan D2",
+      "subtitle": "Family Spaces",
+      "status": "Available",
+      "description": "Beautiful D2 floor plan featuring a spacious and well-distributed design, ideal for families seeking comfort and style. Enjoy large social areas, comfortable bedrooms, and luxury finishes in every corner. Plus, it includes the option of a jacuzzi on the balcony for unique relaxation moments.",
+      "features": [
+        "Large living room with expansive windows",
+        "Open gourmet-style kitchen",
+        "Bedrooms with built-in closets",
+        "Master bedroom with private bathroom",
+        "Additional full bathroom",
+        "Laundry room",
+        "Balconies of 24.7 m² (266 sq ft) with jacuzzi (Additional purchase)",
+        "Air conditioning space"
+      ],
+      "finishes": [
+        "60x60 porcelain tile flooring",
+        "Floor-to-ceiling main and bedroom doors",
+        "Air conditioning outlets",
+        "Kitchen with upper and lower cabinets",
+        "Stove with heat extraction hood",
+        "Fully equipped bathrooms with tiles, accessories, and tempered glass in wet areas"
+      ]
+    },
+    "tipologiaE": {
+      "name": "Floor Plan E",
+      "subtitle": "Studio Apartment",
+      "status": "Available",
+      "description": "Your best urban retreat. This studio apartment offers a compact yet functional design, ideal for those seeking comfort and style in a smaller space. Perfect for professionals or students who value location and access to all building amenities.",
+      "features": [
+        "Studio apartment with smart design",
+        "Private terrace of 7.2 m² (77 sq ft)",
+        "Private bathroom with modern finishes",
+        "Practical and functional kitchen"
+      ],
+      "finishes": [
+        "60x60 porcelain tile flooring",
+        "Floor-to-ceiling main and bedroom doors",
+        "Air conditioning outlets",
+        "Kitchen with upper and lower cabinets",
+        "Stove with heat extraction hood",
+        "Fully equipped bathrooms with tiles, accessories, and tempered glass in wet areas"
+      ]
+    }
   }
 }

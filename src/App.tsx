@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import BrochureButton from "./components/BrochureButton";
 import ScrollToTop from "./components/ScrollToTop";
-import LanguageDetectionModal from "./components/LanguageDetectionModal";
+import InitialLanguageModal from "./components/InitialLanguageModal";
 import Index from "./pages/Index";
 import Proyecto from "./pages/Proyecto";
 import Amenidades from "./pages/Amenidades";
@@ -37,7 +37,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          <LanguageDetectionModal />
+          <InitialLanguageModal />
           <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-1">

@@ -340,5 +340,160 @@
   "seo": {
     "title": "Venezia Tower House | Apartamentos de Lujo en Cartagena",
     "description": "Venezia Tower House es un proyecto de apartamentos de lujo en Cartagena, con arquitectura moderna, amenidades premium y una ubicación privilegiada cerca del mar."
+  },
+  "tipologiaDetail": {
+    "volverTipologias": "Volver a Tipologías",
+    "desde": "Desde",
+    "descripcion": "Descripción",
+    "planoArquitectonico": "Plano Arquitectónico",
+    "caracteristicas": "Características",
+    "acabadosLujo": "Acabados de Lujo",
+    "caracteristicasExclusivas": "Características Exclusivas",
+    "acabadosUltraLujo": "Acabados de Ultra Lujo",
+    "maximoExponente": "El Máximo Exponente del Lujo",
+    "mTotales": "m² totales",
+    "habitaciones": "Habitaciones",
+    "banos": "Baños",
+    "teInteresa": "¿Te interesa esta tipología?",
+    "contactanos": "Contáctanos para agendar una visita y conocer más detalles",
+    "agendarVisita": "Agendar Visita",
+    "tipologiaA": {
+      "name": "Tipología A1",
+      "subtitle": "Para mayor comodidad",
+      "status": "Agotado",
+      "description": "Gran diseño y distribución que ofrece espacios amplios y confortables. Ideal para familias que buscan un hogar elegante con todas las comodidades modernas.",
+      "features": [
+        "Gran sala con amplios ventanales",
+        "Cocina abierta estilo gourmet",
+        "Habitaciones con closet integrado",
+        "Habitación principal con baño privado y terraza privada",
+        "Baño completo adicional",
+        "Cuarto de lavado",
+        "Terraza de 24,7 m²",
+        "Espacio para aire acondicionado"
+      ],
+      "finishes": [
+        "Pisos en porcelanato formato 60x60",
+        "Puertas principales y de habitaciones de piso a techo",
+        "Puntos para aire acondicionado",
+        "Cocina con gabinetes inferiores y superiores",
+        "Estufa con campana de extracción de calor",
+        "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
+      ]
+    },
+    "tipologiaB": {
+      "name": "Tipología B",
+      "subtitle": "Espacios Cómodos",
+      "status": "Disponible",
+      "description": "Opción ideal para quienes buscan un equilibrio perfecto entre funcionalidad y estilo. Esta tipología ofrece espacios bien distribuidos, una amplia sala de estar y un balcón con vista panorámica, creando un ambiente acogedor y moderno.",
+      "features": [
+        "Sala ampliada con buena iluminación",
+        "Cocina integral equipada con barra desayunadora",
+        "Habitación amplia con closet integrado",
+        "Baño completo moderno",
+        "Balcón con vista panorámica de 13,5 m²",
+        "Espacio para aire acondicionado"
+      ],
+      "finishes": [
+        "Pisos en porcelanato formato 60x60",
+        "Puertas principales y de habitaciones de piso a techo",
+        "Puntos para aire acondicionado",
+        "Cocina con gabinetes inferiores y superiores",
+        "Estufa con campana de extracción de calor",
+        "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
+      ]
+    },
+    "tipologiaC": {
+      "name": "Tipología C",
+      "subtitle": "Espacios Funcionales",
+      "status": "Últimas Unidades",
+      "description": "Diseño compacto y eficiente que maximiza cada metro cuadrado. Perfecto para quienes buscan funcionalidad sin sacrificar estilo.",
+      "features": [
+        "Gran sala con amplios ventanales",
+        "Cocina abierta estilo gourmet",
+        "Habitación con closet integrado",
+        "Habitación principal con baño privado",
+        "Baño auxiliar para visitas",
+        "Cuarto de lavado",
+        "Terraza de 7,2 m²",
+        "Espacio para aire acondicionado"
+      ],
+      "finishes": [
+        "Pisos en porcelanato formato 60x60",
+        "Puertas principales y de habitaciones de piso a techo",
+        "Puntos para aire acondicionado",
+        "Cocina con gabinetes inferiores y superiores",
+        "Estufa con campana de extracción de calor",
+        "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
+      ]
+    },
+    "tipologiaD1": {
+      "name": "Tipología D1",
+      "subtitle": "Lujo Familiar",
+      "status": "Disponible",
+      "description": "Excelente distribución que ofrece espacios amplios y confortables. Ideal para familias que buscan un hogar elegante con todas las comodidades modernas.",
+      "features": [
+        "Gran sala con amplios ventanales",
+        "Cocina abierta estilo gourmet",
+        "Habitaciones con closet integrado",
+        "Habitación principal con baño privado",
+        "Baño completo adicional",
+        "Cuarto de lavado",
+        "Terraza de 12,6 m² y jacuzzi (opcional)",
+        "Espacio para aire acondicionado"
+      ],
+      "finishes": [
+        "Pisos en porcelanato formato 60x60",
+        "Puertas principales y de habitaciones de piso a techo",
+        "Puntos para aire acondicionado",
+        "Cocina con gabinetes inferiores y superiores",
+        "Estufa con campana de extracción de calor",
+        "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
+      ]
+    },
+    "tipologiaD2": {
+      "name": "Tipología D2",
+      "subtitle": "Espacios Familiares",
+      "status": "Disponible",
+      "description": "Hermosa tipología D2 que ofrece un diseño espacioso y bien distribuido, ideal para familias que buscan comodidad y estilo. Disfruta de amplias áreas sociales, habitaciones confortables y acabados de lujo en cada rincón. Además, cuenta con la opción de un jacuzzi en el balcón para momentos de relajación únicos.",
+      "features": [
+        "Gran sala con amplios ventanales",
+        "Cocina abierta estilo gourmet",
+        "Habitaciones con closet integrado",
+        "Habitación principal con baño privado",
+        "Baño completo adicional",
+        "Cuarto de lavado",
+        "Balcones de 24,7 m² con jacuzzi (Compra adicional)",
+        "Espacio para aire acondicionado"
+      ],
+      "finishes": [
+        "Pisos en porcelanato formato 60x60",
+        "Puertas principales y de habitaciones de piso a techo",
+        "Puntos para aire acondicionado",
+        "Cocina con gabinetes inferiores y superiores",
+        "Estufa con campana de extracción de calor",
+        "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
+      ]
+    },
+    "tipologiaE": {
+      "name": "Tipología E",
+      "subtitle": "Apartaestudio",
+      "status": "Disponible",
+      "description": "Tu mejor refugio en la ciudad. Este apartaestudio ofrece un diseño compacto pero funcional, ideal para quienes buscan comodidad y estilo en un espacio reducido. Perfecto para profesionales o estudiantes que valoran la ubicación y el acceso a todas las amenidades del edificio.",
+      "features": [
+        "Apartaestudio con diseño inteligente",
+        "Terraza privada de 7,2 m²",
+        "Baño privado con acabados modernos",
+        "Cocina práctica y funcional"
+      ],
+      "finishes": [
+        "Pisos en porcelanato formato 60x60",
+        "Puertas principales y de habitaciones de piso a techo",
+        "Puntos para aire acondicionado",
+        "Cocina con gabinetes inferiores y superiores",
+        "Estufa con campana de extracción de calor",
+        "Baños completamente dotados con enchape, accesorios y vidrio templado en zonas húmedas"
+      ]
+    }
   }
 }
