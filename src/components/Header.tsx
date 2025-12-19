@@ -3,11 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { createPortal } from "react-dom";
 import { Button } from "./ui/button";
+import LanguageSelector from "./LanguageSelector";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +20,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Disable body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -34,19 +36,19 @@ const Header = () => {
   }, [location.pathname]);
 
   const navLinks = [
-    { name: "INICIO", path: "/" },
-    { name: "PROYECTO", path: "/proyecto" },
-    { name: "AMENIDADES", path: "/amenidades" },
-    { name: "TIPOLOGÍAS", path: "/tipologias" },
-    { name: "UBICACIÓN", path: "/ubicacion" },
-    { name: "TRAYECTORIA", path: "/trayectoria" },
-    { name: "GALERÍA", path: "/galeria" },
-    { name: "CONTACTO", path: "/contacto" },
+    { name: t('nav.inicio'), path: "/" },
+    { name: t('nav.proyecto'), path: "/proyecto" },
+    { name: t('nav.amenidades'), path: "/amenidades" },
+    { name: t('nav.tipologias'), path: "/tipologias" },
+    { name: t('nav.ubicacion'), path: "/ubicacion" },
+    { name: t('nav.trayectoria'), path: "/trayectoria" },
+    { name: t('nav.galeria'), path: "/galeria" },
+    { name: t('nav.contacto'), path: "/contacto" },
   ];
 
   const openWhatsApp = () => {
     const phoneNumber = "573204637230";
-    const message = "Hola, me gustaría recibir más información sobre Venezia Tower House.";
+    const message = t('whatsapp.mensaje');
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
@@ -61,7 +63,7 @@ const Header = () => {
     >
       <nav className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20 lg:h-24">
-          {/* Logo - Premium size with better positioning */}
+          {/* Logo */}
           <Link to="/" className="flex items-center transition-smooth hover:opacity-90 -ml-2">
             <img 
               src="/images/venezia-logo-new.png" 
@@ -72,7 +74,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-10">
+          <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -93,23 +95,27 @@ const Header = () => {
                 />
               </Link>
             ))}
+            <LanguageSelector />
             <Button
               onClick={openWhatsApp}
               variant="outline"
               className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground font-medium px-6 py-2 transition-smooth uppercase text-sm tracking-wide"
             >
-              Contactar
+              {t('nav.contactar')}
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-foreground hover:text-accent transition-smooth p-2"
-            aria-label="Abrir menú"
-          >
-            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          {/* Mobile Menu Button and Language Selector */}
+          <div className="lg:hidden flex items-center gap-3">
+            <LanguageSelector />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-foreground hover:text-accent transition-smooth p-2"
+              aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            >
+              {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -133,7 +139,7 @@ const Header = () => {
             <div className="flex flex-col h-full">
               {/* Header with Close Button */}
               <div className="flex items-center justify-between p-6 border-b border-accent/30 bg-background">
-                <span className="text-foreground font-display font-bold text-lg uppercase tracking-wide">Menú</span>
+                <span className="text-foreground font-display font-bold text-lg uppercase tracking-wide">{t('nav.menu')}</span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 hover:bg-accent/10 rounded-lg transition-all"
@@ -173,7 +179,7 @@ const Header = () => {
                   }}
                   className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-base font-semibold uppercase tracking-wide shadow-lg"
                 >
-                  Contactar por WhatsApp
+                  {language === 'en' ? 'Contact via WhatsApp' : 'Contactar por WhatsApp'}
                 </Button>
               </div>
             </div>

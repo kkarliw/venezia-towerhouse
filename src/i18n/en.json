@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "inicio": "HOME",
+    "proyecto": "PROJECT",
+    "amenidades": "AMENITIES",
+    "tipologias": "FLOOR PLANS",
+    "ubicacion": "LOCATION",
+    "trayectoria": "TRACK RECORD",
+    "galeria": "GALLERY",
+    "contacto": "CONTACT",
+    "contactar": "Contact",
+    "menu": "Menu"
+  },
+  "hero": {
+    "badge": "Located in Crespo, Cartagena",
+    "title1": "Your Best Investment",
+    "title2": "in Cartagena",
+    "description": "A strategic location combining accessibility, appreciation potential, and a quiet residential environment. Living in Crespo means enjoying ocean breezes, walking to the beach, and having everything nearby.",
+    "cta": "Contact Us via WhatsApp",
+    "ctaSecondary": "View Floor Plans"
+  },
+  "concepto": {
+    "title1": "A Unique",
+    "title2": "Lifestyle",
+    "description": "Venezia Tower House in Crespo is more than a place to live. It's a peaceful lifestyle with immediate access to beaches, restaurants, essential services, and everything you need, without losing that sense of privacy and well-being.",
+    "apartamentos": "Apartments",
+    "pisos": "Floors"
+  },
+  "tipologias": {
+    "title1": "Our",
+    "title2": "Floor Plans",
+    "description": "7 design options tailored to your lifestyle",
+    "cta": "Explore All Floor Plans",
+    "disponible": "Available",
+    "ultimasUnidades": "Last units",
+    "habitacion": "bedroom",
+    "habitaciones": "bedrooms",
+    "apartaestudio": "Studio"
+  },
+  "estadisticas": {
+    "unidadesEntregadas": "Units Delivered",
+    "anosExperiencia": "Years of Experience",
+    "clientesSatisfechos": "Satisfied Clients",
+    "entregasATiempo": "On-Time Deliveries"
+  },
+  "ubicacion": {
+    "title1": "Strategic",
+    "title2": "Location",
+    "description": "Living well means living close to everything. In Crespo, you'll enjoy the beach, services, and important areas just minutes away.",
+    "cta": "Discover Location",
+    "centroHistorico": "Historic Center",
+    "aeropuerto": "Airport",
+    "playasParque": "Beaches & Parks",
+    "escuelas": "Schools",
+    "cerca": "Nearby"
+  },
+  "amenidades": {
+    "title1": "Our",
+    "title2": "Amenities",
+    "description": "Spaces designed for your well-being and comfort",
+    "piscina": "Pool",
+    "piscinaDesc": "Relaxation space",
+    "gimnasio": "Gym",
+    "gimnasioDesc": "Exercise room",
+    "zonaBBQ": "BBQ Area",
+    "zonaBBQDesc": "Family gatherings",
+    "lobby": "Lobby",
+    "lobbyDesc": "Exclusive design",
+    "zonasSociales": "Social Areas",
+    "zonasSocialesDesc": "Common areas",
+    "cta": "Explore Amenities"
+  },
+  "trayectoria": {
+    "title1": "Discover Our",
+    "title2": "Track Record",
+    "description": "Over a decade building dreams and exceeding expectations",
+    "cta": "View All Projects",
+    "entregado": "Delivered",
+    "enEntrega": "In Delivery",
+    "enProceso": "In Progress",
+    "unidades": "units"
+  },
+  "galeria": {
+    "title1": "Visual",
+    "title2": "Gallery",
+    "description": "Discover every space designed with elegance and attention to detail",
+    "cta": "View Full Gallery"
+  },
+  "contacto": {
+    "title1": "Contact Us",
+    "description": "Get a quote for your best housing option with us",
+    "formTitle": "Let's talk about your",
+    "formTitle2": "future home",
+    "formDescription": "Our team of advisors is ready to answer all your questions and guide you through the process of acquiring your apartment at Venezia Tower House.",
+    "direccion": "Address",
+    "telefono": "Phone",
+    "email": "Email",
+    "horarios": "Hours",
+    "nombreCompleto": "Full name",
+    "mensaje": "Message (optional)",
+    "enviar": "Send Message",
+    "enviando": "Sending...",
+    "mensajeEnviado": "Message sent! We'll contact you soon.",
+    "mapaTitle": "Find us in the",
+    "mapaTitle2": "heart of Cartagena"
+  },
+  "footer": {
+    "descripcion": "Luxury residences with contemporary design in one of the most exclusive areas of Cartagena.",
+    "enlaces": "Links",
+    "contacto": "Contact",
+    "siguenos": "Follow Us",
+    "derechos": "All rights reserved."
+  },
+  "whatsapp": {
+    "mensaje": "Hello, I would like to receive more information about Venezia Tower House.",
+    "mensajeVisita": "Hello, I would like to schedule a visit to Venezia Tower House."
+  },
+  "seo": {
+    "title": "Venezia Tower House | Luxury Apartments in Cartagena, Colombia",
+    "description": "Venezia Tower House offers luxury apartments in Cartagena with modern architecture, premium amenities, and a privileged beachfront location. Ideal for living or investment."
+  }
+}
