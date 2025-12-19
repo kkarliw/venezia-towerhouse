@@ -17,11 +17,7 @@ const InitialLanguageModal = () => {
     
     setSuggestedLanguage(isSpanish ? 'es' : 'en');
     
-    const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 500);
-    
-    return () => clearTimeout(timer);
+    setShowModal(true);
   }, []);
 
   const handleSelectLanguage = (lang: 'es' | 'en') => {
