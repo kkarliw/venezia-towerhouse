@@ -11,6 +11,7 @@ import BrochureButton from "./components/BrochureButton";
 import ScrollToTop from "./components/ScrollToTop";
 import InitialLanguageModal from "./components/InitialLanguageModal";
 import DynamicSEO from "./components/DynamicSEO";
+import JsonLdSchema from "./components/JsonLdSchema";
 import Index from "./pages/Index";
 import Proyecto from "./pages/Proyecto";
 import Amenidades from "./pages/Amenidades";
@@ -39,6 +40,7 @@ const App = () => (
           <Sonner />
           <ScrollToTop />
           <DynamicSEO />
+          <JsonLdSchema />
           <InitialLanguageModal />
           <div className="min-h-screen flex flex-col">
             <Header />
