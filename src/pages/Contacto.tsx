@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -30,6 +31,7 @@ const slideInRight = {
 };
 
 const Contacto = () => {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,26 +41,29 @@ const Contacto = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
-      alert("Por favor completa todos los campos obligatorios");
+      alert(t("contacto.camposObligatorios"));
       setIsSubmitting(false);
       return;
     }
 
     const phoneNumber = "573204637230";
-    const message = `Hola, me llamo ${formData.name}.\nEmail: ${formData.email}\nTeléfono: ${formData.phone}\n\nMensaje: ${formData.message || "Solicito información sobre Venezia Tower House"}`;
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const messageTemplate = language === 'es' 
+      ? `Hola, me llamo ${formData.name}.\nEmail: ${formData.email}\nTeléfono: ${formData.phone}\n\nMensaje: ${formData.message || "Solicito información sobre Venezia Tower House"}`
+      : `Hello, my name is ${formData.name}.\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage: ${formData.message || "I'm requesting information about Venezia Tower House"}`;
+    
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(messageTemplate)}`;
 
     setTimeout(() => {
       window.open(url, "_blank");
@@ -90,10 +95,10 @@ const Contacto = () => {
           viewport={{ once: true }}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            <span className="text-accent">Contáctanos</span>
+            <span className="text-accent">{t("contacto.title1")}</span>
           </h1>
           <p className="text-base sm:text-xl text-white/90 max-w-2xl mx-auto font-light">
-            Cotiza tu mejor opción de vivienda con nosotros
+            {t("contacto.description")}
           </p>
         </motion.div>
       </section>
@@ -112,11 +117,11 @@ const Contacto = () => {
             >
               <div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-4 sm:mb-6">
-                  Hablemos sobre tu <span className="text-accent">futuro hogar</span>
+                  {t("contacto.formTitle")} <span className="text-accent">{t("contacto.formTitle2")}</span>
                 </h2>
                 <div className="w-16 h-1 bg-accent rounded-full mb-4 sm:mb-6" />
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  Nuestro equipo de asesores está listo para responder todas tus preguntas y guiarte en el proceso de adquisición de tu apartamento en Venezia Tower House.
+                  {t("contacto.formDescription")}
                 </p>
               </div>
 
@@ -134,9 +139,9 @@ const Contacto = () => {
                       <MapPin className="w-6 sm:w-7 h-6 sm:h-7 text-accent" />
                     </motion.div>
                     <div>
-                      <h3 className="font-bold text-primary mb-2 text-base sm:text-lg">Dirección</h3>
-                      <p className="text-muted-foreground text-sm sm:text-base">Crespo, Cra 3 #65-109</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">Cartagena, Colombia</p>
+                      <h3 className="font-bold text-primary mb-2 text-base sm:text-lg">{t("contacto.direccion")}</h3>
+                      <p className="text-muted-foreground text-sm sm:text-base">{t("contacto.direccionValor")}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">{t("contacto.ciudad")}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -155,11 +160,11 @@ const Contacto = () => {
                       <Phone className="w-6 sm:w-7 h-6 sm:h-7 text-accent" />
                     </motion.div>
                     <div>
-                      <h3 className="font-bold text-primary mb-2 text-base sm:text-lg">Teléfono</h3>
+                      <h3 className="font-bold text-primary mb-2 text-base sm:text-lg">{t("contacto.telefono")}</h3>
                       <p className="text-accent hover:text-accent/80 transition-colors font-semibold text-sm sm:text-base">
-                        +57 (320) 4637230
+                        {t("contacto.telefonoValor")}
                       </p>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">Lunes a Sábados</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">{t("contacto.diasSemana")}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -178,11 +183,11 @@ const Contacto = () => {
                       <Mail className="w-6 sm:w-7 h-6 sm:h-7 text-accent" />
                     </motion.div>
                     <div>
-                      <h3 className="font-bold text-primary mb-2 text-base sm:text-lg">Email</h3>
+                      <h3 className="font-bold text-primary mb-2 text-base sm:text-lg">{t("contacto.email")}</h3>
                       <p className="text-accent hover:text-accent/80 transition-colors font-semibold text-sm sm:text-base break-all">
-                        veneziatowerhouse@gmail.com
+                        {t("contacto.emailValor")}
                       </p>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">Respuestas en menos de 24 horas</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">{t("contacto.respuestaRapida")}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -200,9 +205,9 @@ const Contacto = () => {
                       <Clock className="w-6 sm:w-7 h-6 sm:h-7 text-accent" />
                     </motion.div>
                     <div>
-                      <h3 className="font-bold text-primary mb-2 text-base sm:text-lg">Horarios</h3>
-                      <p className="text-muted-foreground text-xs sm:text-sm">Lunes a Viernes: 7:00 a.m. - 5:00 p.m.</p>
-                      <p className="text-muted-foreground text-xs sm:text-sm mt-1">Sábados y Domingos: 7:00 a.m. - 12:00 p.m.</p>
+                      <h3 className="font-bold text-primary mb-2 text-base sm:text-lg">{t("contacto.horarios")}</h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm">{t("contacto.horariosLV")}</p>
+                      <p className="text-muted-foreground text-xs sm:text-sm mt-1">{t("contacto.horariosSD")}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -217,7 +222,6 @@ const Contacto = () => {
               variants={slideInRight}
             >
               <div className="bg-gradient-to-br from-muted to-muted/50 p-6 sm:p-10 lg:p-12 rounded-2xl shadow-lg border border-accent/10 relative overflow-hidden">
-                {/* Fondo animado */}
                 <motion.div
                   className="absolute top-0 right-0 w-40 h-40 bg-accent/5 rounded-full blur-3xl -z-10"
                   animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -232,20 +236,20 @@ const Contacto = () => {
                   >
                     <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
                     <p className="text-green-800 text-sm sm:text-base font-medium">
-                      ¡Mensaje enviado! Te contactaremos pronto.
+                      {t("contacto.mensajeEnviado")}
                     </p>
                   </motion.div>
                 )}
 
                 <h3 className="text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8 flex items-center gap-2">
                   <Sparkles className="w-6 h-6 text-accent" />
-                  Envíanos un mensaje
+                  {t("contacto.enviarMensaje")}
                 </h3>
 
-                <div className="space-y-4 sm:space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-xs sm:text-sm font-semibold text-primary mb-2 tracking-wide">
-                      Nombre completo *
+                      {t("contacto.nombreCompleto")} *
                     </label>
                     <input
                       id="name"
@@ -253,7 +257,7 @@ const Contacto = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Tu nombre"
+                      placeholder={t("contacto.tuNombre")}
                       className="w-full px-4 py-3 sm:py-4 bg-background text-primary placeholder-muted-foreground border border-accent/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-sm sm:text-base"
                       required
                     />
@@ -261,7 +265,7 @@ const Contacto = () => {
 
                   <div>
                     <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-primary mb-2 tracking-wide">
-                      Email *
+                      {t("contacto.email")} *
                     </label>
                     <input
                       id="email"
@@ -269,7 +273,7 @@ const Contacto = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="tu@gmail.com"
+                      placeholder={t("contacto.tuEmail")}
                       className="w-full px-4 py-3 sm:py-4 bg-background text-primary placeholder-muted-foreground border border-accent/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-sm sm:text-base"
                       required
                     />
@@ -277,7 +281,7 @@ const Contacto = () => {
 
                   <div>
                     <label htmlFor="phone" className="block text-xs sm:text-sm font-semibold text-primary mb-2 tracking-wide">
-                      Teléfono *
+                      {t("contacto.telefono")} *
                     </label>
                     <input
                       id="phone"
@@ -285,7 +289,7 @@ const Contacto = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+57 320 123 4567"
+                      placeholder={t("contacto.tuTelefono")}
                       className="w-full px-4 py-3 sm:py-4 bg-background text-primary placeholder-muted-foreground border border-accent/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-sm sm:text-base"
                       required
                     />
@@ -293,34 +297,34 @@ const Contacto = () => {
 
                   <div>
                     <label htmlFor="message" className="block text-xs sm:text-sm font-semibold text-primary mb-2 tracking-wide">
-                      Mensaje (opcional)
+                      {t("contacto.mensaje")}
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Escribe tu mensaje aquí..."
+                      placeholder={t("contacto.escribeTuMensaje")}
                       className="w-full px-4 py-3 sm:py-4 bg-background text-primary placeholder-muted-foreground border border-accent/20 rounded-lg focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all min-h-[100px] sm:min-h-[120px] resize-none text-sm sm:text-base"
                       rows={4}
                     />
                   </div>
 
                   <motion.button
-                    onClick={handleSubmit}
+                    type="submit"
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-accent hover:bg-accent/90 disabled:bg-accent/50 text-primary font-bold rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl text-sm sm:text-base"
                   >
-                    {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+                    {isSubmitting ? t("contacto.enviando") : t("contacto.enviar")}
                     <Send className="w-5 h-5 sm:w-6 sm:h-6" />
                   </motion.button>
 
                   <p className="text-xs text-muted-foreground text-center">
-                    Envía tu mensaje y te responderemos a la brevedad posible.
+                    {t("contacto.enviarFooter")}
                   </p>
-                </div>
+                </form>
               </div>
             </motion.div>
           </div>
@@ -344,7 +348,7 @@ const Contacto = () => {
             className="mb-12 sm:mb-16"
           >
             <h2 className="text-3xl sm:text-5xl font-bold text-primary text-center">
-              Encuéntranos en el <span className="text-accent">corazón de Cartagena</span>
+              {t("contacto.mapaTitle")} <span className="text-accent">{t("contacto.mapaTitle2")}</span>
             </h2>
           </motion.div>
 

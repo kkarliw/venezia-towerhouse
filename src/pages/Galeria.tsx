@@ -1,69 +1,71 @@
 import { useState } from "react";
 import { X } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Galeria = () => {
+  const { t, language } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = [
     {
       url: "/images/fachada-01.jpg",
-      category: "Fachada",
-      title: "Fachada Principal",
+      category: language === 'es' ? "Fachada" : "Facade",
+      title: language === 'es' ? "Fachada Principal" : "Main Facade",
     },
     {
       url: "/images/fachada-02.jpg",
-      category: "Fachada",
-      title: "Vista Exterior",
+      category: language === 'es' ? "Fachada" : "Facade",
+      title: language === 'es' ? "Vista Exterior" : "Exterior View",
     },
     {
       url: "/images/lobby.jpg",
-      category: "Interiores",
+      category: language === 'es' ? "Interiores" : "Interiors",
       title: "Lobby",
     },
     {
       url: "/images/sala-comedor-01.jpg",
-      category: "Interiores",
-      title: "Sala - Comedor",
+      category: language === 'es' ? "Interiores" : "Interiors",
+      title: language === 'es' ? "Sala - Comedor" : "Living - Dining Room",
     },
     {
       url: "/images/sala-comedor-02.jpg",
-      category: "Interiores",
-      title: "Sala - Comedor",
+      category: language === 'es' ? "Interiores" : "Interiors",
+      title: language === 'es' ? "Sala - Comedor" : "Living - Dining Room",
     },
     {
       url: "/images/cocina-03.jpg",
-      category: "Interiores",
-      title: "Cocina",
+      category: language === 'es' ? "Interiores" : "Interiors",
+      title: language === 'es' ? "Cocina" : "Kitchen",
     },
     {
       url: "/images/habitacion-04.jpg",
-      category: "Interiores",
-      title: "Habitación",
+      category: language === 'es' ? "Interiores" : "Interiors",
+      title: language === 'es' ? "Habitación" : "Bedroom",
     },
     {
       url: "/images/habitacion23.jpg",
-      category: "Interiores",
-      title: "Habitación Principal",
+      category: language === 'es' ? "Interiores" : "Interiors",
+      title: language === 'es' ? "Habitación Principal" : "Master Bedroom",
     },
     {
       url: "/images/gym.jpg",
-      category: "Amenidades",
-      title: "Gimnasio",
+      category: language === 'es' ? "Amenidades" : "Amenities",
+      title: language === 'es' ? "Gimnasio" : "Gym",
     },
     {
       url: "/images/piscina.jpg",
-      category: "Amenidades",
-      title: "Piscina",
+      category: language === 'es' ? "Amenidades" : "Amenities",
+      title: language === 'es' ? "Piscina" : "Pool",
     },
     {
       url: "/images/zona4.jpg",
-      category: "Amenidades",
-      title: "Zona Social",
+      category: language === 'es' ? "Amenidades" : "Amenities",
+      title: language === 'es' ? "Zona Social" : "Social Area",
     },
-      {
+    {
       url: "/images/zona-social.jpg",
-      category: "Amenidades",
-      title: "Zona Social",
+      category: language === 'es' ? "Amenidades" : "Amenities",
+      title: language === 'es' ? "Zona Social" : "Social Area",
     },
   ];
 
@@ -82,13 +84,13 @@ const Galeria = () => {
 
         <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <h1 className="text-5xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up">
-            <span className="text-accent">Galería</span> Visual
+            <span className="text-accent">{t("galeria.title1")}</span> {t("galeria.title2")}
           </h1>
           <p
             className="text-xl text-primary-foreground/90 max-w-2xl mx-auto animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            Explora cada rincón de Venezia Tower House
+            {t("galeria.heroDesc")}
           </p>
         </div>
       </section>
@@ -135,14 +137,14 @@ const Galeria = () => {
           <button
             onClick={() => setSelectedImage(null)}
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-accent hover:bg-accent/90 text-primary flex items-center justify-center transition-smooth shadow-gold"
-            aria-label="Cerrar"
+            aria-label={t("galeria.cerrar")}
           >
             <X size={24} />
           </button>
 
           <img
             src={selectedImage}
-            alt="Imagen ampliada"
+            alt={language === 'es' ? "Imagen ampliada" : "Enlarged image"}
             className="max-w-full max-h-[90vh] rounded-lg shadow-lift"
             onClick={(e) => e.stopPropagation()}
           />

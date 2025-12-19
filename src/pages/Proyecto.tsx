@@ -1,35 +1,32 @@
 import { Building2, Home, TreePine, Shield, Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Proyecto = () => {
+  const { t } = useLanguage();
+
   const features = [
     {
       icon: Building2,
-      title: "Arquitectura Moderna",
-      description: "Diseño contemporáneo con líneas limpias y materiales de alta calidad, pensado para integrarse a la dinámica urbana de Crespo.",
+      title: t("proyecto.arquitectura"),
+      description: t("proyecto.arquitecturaDesc"),
     },
     {
       icon: Home,
-      title: "Espacios Eficientes",
-      description: "Distribuciones funcionales que maximizan la luz natural, la ventilación y el aprovechamiento de cada metro cuadrado.",
+      title: t("proyecto.espacios"),
+      description: t("proyecto.espaciosDesc"),
     },
     {
       icon: TreePine,
-      title: "Áreas Verdes",
-      description: "Parque infantil y zonas verdes para la recreación y el esparcimiento de toda la familia.",
+      title: t("proyecto.areasVerdes"),
+      description: t("proyecto.areasVerdesDesc"),
     },
     {
       icon: Shield,
-      title: "Seguridad 24/7",
-      description: "Sistema de seguridad integral con acceso controlado y vigilancia",
+      title: t("proyecto.seguridad"),
+      description: t("proyecto.seguridadDesc"),
     },
   ];
-
-  const proyectoInfo = {
-    fechaInicio: "2024",
-    fechaEntrega: "Segundo semestre de 2028",
-    estado: "En desarrollo",
-  };
 
   return (
     <div className="min-h-screen pt-20">
@@ -48,6 +45,7 @@ const Proyecto = () => {
           animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
       `}</style>
+
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div
@@ -65,10 +63,10 @@ const Proyecto = () => {
 
         <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <h1 className="text-5xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up">
-            El <span className="text-accent">Proyecto</span>
+            {t("proyecto.heroTitle1")} <span className="text-accent">{t("proyecto.heroTitle2")}</span>
           </h1>
           <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            Una obra maestra arquitectónica en el corazón de la ciudad
+            {t("proyecto.heroDesc")}
           </p>
         </div>
       </section>
@@ -79,31 +77,31 @@ const Proyecto = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 animate-slide-in-left">
               <h2 className="text-4xl lg:text-5xl font-bold text-primary">
-                Venezia Tower House
+                {t("proyecto.descTitle")}
               </h2>
               <div className="w-24 h-1 bg-accent" />
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Ubicado en Crespo, Cartagena. Venezia Tower House es un proyecto residencial contemporáneo diseñado para quienes buscan confort, ubicación estratégica y un estilo de vida práctico y moderno.
+                {t("proyecto.descP1")}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Con 16 niveles, 3 pisos de parqueaderos, 50 unidades exclusivas y amenidades completas, Venezia integra arquitectura actual, funcionalidad y espacios pensados para la vida cotidiana y las nuevas dinámicas de vivienda y renta.
+                {t("proyecto.descP2")}
               </p>
               <div className="grid grid-cols-2 gap-6 pt-8">
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-accent">16</div>
-                  <div className="text-sm text-muted-foreground">Niveles de Altura</div>
+                  <div className="text-sm text-muted-foreground">{t("proyecto.niveles")}</div>
                 </div>
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-accent">50</div>
-                  <div className="text-sm text-muted-foreground">Apartamentos</div>
+                  <div className="text-sm text-muted-foreground">{t("proyecto.apartamentos")}</div>
                 </div>
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-accent">7</div>
-                  <div className="text-sm text-muted-foreground">Tipologías Únicas</div>
+                  <div className="text-sm text-muted-foreground">{t("proyecto.tipologiasUnicas")}</div>
                 </div>
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-accent">215,4 m²</div>
-                  <div className="text-sm text-muted-foreground">Áreas Comunes</div>
+                  <div className="text-sm text-muted-foreground">{t("proyecto.areasComunes")}</div>
                 </div>
               </div>
             </div>
@@ -127,10 +125,10 @@ const Proyecto = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
-              Características <span className="text-accent">Distintivas</span>
+              {t("proyecto.caracteristicas")} <span className="text-accent">{t("proyecto.distintivas")}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Elementos que hacen de Venezia Tower House un proyecto único
+              {t("proyecto.caracteristicasDesc")}
             </p>
           </div>
 
@@ -155,10 +153,10 @@ const Proyecto = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
-              Estado del <span className="text-accent">Proyecto</span>
+              {t("proyecto.estadoProyecto")} <span className="text-accent">{t("proyecto.estadoProyectoTitle")}</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Cronograma de desarrollo y hitos clave del proyecto Venezia Tower House
+              {t("proyecto.cronograma")}
             </p>
           </div>
 
@@ -168,25 +166,25 @@ const Proyecto = () => {
               {[
                 {
                   year: "2024",
-                  phase: "Inicio del Proyecto",
-                  title: "Licencias y Preparación",
-                  description: "Obtención de licencias, diseño final y preparación del terreno",
+                  phase: t("proyecto.inicioProyecto"),
+                  title: t("proyecto.licencias"),
+                  description: t("proyecto.licenciasDesc"),
                   icon: Building2,
                   status: "completed",
                 },
                 {
                   year: "2025-2028",
-                  phase: "En Construcción",
-                  title: "Fase Actual",
-                  description: "Construcción activa con avances significativos",
+                  phase: t("proyecto.enConstruccion"),
+                  title: t("proyecto.faseActual"),
+                  description: t("proyecto.faseActualDesc"),
                   icon: Home,
                   status: "active",
                 },
                 {
-                  year: "Segundo Semestre de 2028",
-                  phase: "Entrega",
-                  title: "Entrega de Unidades",
-                  description: "Entrega de todas las unidades a los propietarios",
+                  year: "2028",
+                  phase: t("proyecto.entrega"),
+                  title: t("proyecto.entregaUnidades"),
+                  description: t("proyecto.entregaDesc"),
                   icon: Shield,
                   status: "pending",
                 }
@@ -197,7 +195,6 @@ const Proyecto = () => {
 
                 return (
                   <div key={index} className="relative animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                    {/* Línea conectora (solo entre items) */}
                     {index < 2 && (
                       <div className="absolute left-8 top-24 w-0.5 h-16 bg-gradient-to-b from-accent/60 to-accent/20" />
                     )}
@@ -208,29 +205,26 @@ const Proyecto = () => {
                       'bg-blue-50 border-blue-200'
                     }`}>
                       
-                      {/* Status Badge */}
                       <div className="absolute -top-3 right-6">
                         {isCompleted && (
                           <span className="inline-flex items-center gap-1 bg-green-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md">
                             <Check className="w-4 h-4" />
-                            Completado
+                            {t("proyecto.completado")}
                           </span>
                         )}
                         {isActive && (
                           <span className="inline-flex items-center gap-1 bg-accent text-primary px-4 py-1.5 rounded-full text-xs font-bold shadow-md animate-bounce" style={{ animationDuration: '2s' }}>
-                            ⚡ En Curso
+                            ⚡ {t("proyecto.enCurso")}
                           </span>
                         )}
                         {milestone.status === 'pending' && (
                           <span className="inline-flex items-center gap-1 bg-blue-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md">
-                            Próximo
+                            {t("proyecto.proximo")}
                           </span>
                         )}
                       </div>
 
-                      {/* Content */}
                       <div className="flex gap-6">
-                        {/* Icon Circle */}
                         <div className={`w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 ${
                           isCompleted ? 'bg-green-200 text-green-700' :
                           isActive ? 'bg-amber-200 text-amber-700' :
@@ -239,7 +233,6 @@ const Proyecto = () => {
                           <Icon className="w-8 h-8" />
                         </div>
 
-                        {/* Text */}
                         <div className="flex-1">
                           <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${
                             isCompleted ? 'text-green-700' :
@@ -263,10 +256,9 @@ const Proyecto = () => {
           {/* Financing Plans */}
           <div className="mb-16">
             <h3 className="text-4xl font-bold text-primary text-center mb-10">
-              Planes de <span className="text-accent">Financiación</span>
-              <p
-              className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-                Descubre las opciones flexibles que ofrecemos para hacer realidad la compra de tu apartamento en Venezia Tower House.
+              {t("proyecto.planesFinanciacion")} <span className="text-accent">{t("proyecto.financiacion")}</span>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+                {t("proyecto.planesDesc")}
               </p>
             </h3>
             
@@ -275,24 +267,24 @@ const Proyecto = () => {
               <div className="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-3xl overflow-hidden shadow-2xl hover:shadow-lift transition-all duration-300 transform hover:-translate-y-2">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/30">
                   <div className="px-6 py-8 lg:px-8 lg:py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">Separación</p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">{t("proyecto.separacion")}</p>
                     <p className="text-4xl lg:text-5xl font-bold text-white">5%</p>
-                    <p className="text-xs lg:text-sm mt-2 text-white/90">Máx. 2 cuotas</p>
+                    <p className="text-xs lg:text-sm mt-2 text-white/90">{t("proyecto.maxCuotas")}</p>
                   </div>
                   <div className="px-6 py-8 lg:px-8 lg:py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">Cuota Inicial</p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">{t("proyecto.cuotaInicial")}</p>
                     <p className="text-4xl lg:text-5xl font-bold text-white">25%</p>
-                    <p className="text-xs lg:text-sm mt-2 text-white/90">Al momento de compra</p>
+                    <p className="text-xs lg:text-sm mt-2 text-white/90">{t("proyecto.momentoCompra")}</p>
                   </div>
                   <div className="px-6 py-8 lg:px-8 lg:py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">Cuotas Mensuales</p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">{t("proyecto.cuotasMensuales")}</p>
                     <p className="text-4xl lg:text-5xl font-bold text-white">36</p>
-                    <p className="text-xs lg:text-sm mt-2 text-white/90">Hasta entrega</p>
+                    <p className="text-xs lg:text-sm mt-2 text-white/90">{t("proyecto.hastaEntrega")}</p>
                   </div>
                   <div className="px-6 py-8 lg:px-8 lg:py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">Saldo Final</p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">{t("proyecto.saldoFinal")}</p>
                     <p className="text-4xl lg:text-5xl font-bold text-white">70%</p>
-                    <p className="text-xs lg:text-sm mt-2 text-white/90">Al momento de entrega</p>
+                    <p className="text-xs lg:text-sm mt-2 text-white/90">{t("proyecto.momentoEntrega")}</p>
                   </div>
                 </div>
               </div>
@@ -303,31 +295,31 @@ const Proyecto = () => {
               <div className="flex justify-center mb-6">
                 <div className="animate-bounce" style={{ animationDuration: '2s' }}>
                   <span className="inline-flex items-center gap-2 bg-white text-primary px-6 py-2 rounded-full text-xs font-bold shadow-lg uppercase tracking-wider">
-                    ⭐ Forma de Pago Popular ⭐
+                    ⭐ {t("proyecto.formaPagoPopular")} ⭐
                   </span>
                 </div>
               </div>
               <div className="bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 rounded-3xl overflow-hidden shadow-2xl hover:shadow-lift transition-all duration-300 transform hover:-translate-y-2 animate-pulse-subtle">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
                   <div className="px-4 sm:px-6 py-8 lg:px-8 lg:py-10 text-center text-primary hover:bg-white/20 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-white/30">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-primary/90">Cuota Inicial</p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-primary/90">{t("proyecto.cuotaInicial")}</p>
                     <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">30%</p>
-                    <p className="text-xs lg:text-sm mt-2 text-primary/90">Separación + 25%</p>
+                    <p className="text-xs lg:text-sm mt-2 text-primary/90">{t("proyecto.separacion")} + 25%</p>
                   </div>
                   <div className="px-4 sm:px-6 py-8 lg:px-8 lg:py-10 text-center text-primary hover:bg-white/20 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-white/30">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-primary/90">Cuotas Ordinarias</p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-primary/90">{t("proyecto.cuotasOrdinarias")}</p>
                     <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">36</p>
-                    <p className="text-xs lg:text-sm mt-2 text-primary/90">Pagos mensuales</p>
+                    <p className="text-xs lg:text-sm mt-2 text-primary/90">{t("proyecto.pagosMensuales")}</p>
                   </div>
                   <div className="px-4 sm:px-6 py-8 lg:px-8 lg:py-10 text-center text-primary hover:bg-white/20 transition-colors duration-300 border-b sm:border-b-0 sm:border-r border-white/30">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-primary/90">Crédito Hipotecario</p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-primary/90">{t("proyecto.creditoHipotecario")}</p>
                     <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">70%</p>
-                    <p className="text-xs lg:text-sm mt-2 text-primary/90">Hasta 20 años</p>
+                    <p className="text-xs lg:text-sm mt-2 text-primary/90">{t("proyecto.hasta20Anos")}</p>
                   </div>
                   <div className="px-4 sm:px-6 py-8 lg:px-8 lg:py-10 text-center text-primary hover:bg-white/20 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-primary/90">Tasa</p>
-                    <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">Preferencial</p>
-                    <p className="text-xs lg:text-sm mt-2 text-primary/90">Depende de su banco </p>
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-primary/90">{t("proyecto.tasa")}</p>
+                    <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary">{t("proyecto.preferencial")}</p>
+                    <p className="text-xs lg:text-sm mt-2 text-primary/90">{t("proyecto.dependeBanco")}</p>
                   </div>
                 </div>
               </div>
@@ -336,26 +328,22 @@ const Proyecto = () => {
             {/* Plan 3: Contado */}
             <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="bg-gradient-to-r from-slate-700 to-slate-900 rounded-3xl overflow-hidden shadow-2xl hover:shadow-lift transition-all duration-300 transform hover:-translate-y-2">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
-                  <div className="px-6 py-8 lg:px-8 lg:py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">Pago en Contado</p>
-                    <p className="text-4xl lg:text-5xl font-bold text-white">100%</p>
-                    <p className="text-xs lg:text-sm mt-2 text-white/90">Descuentos especiales</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
+                  <div className="px-8 py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
+                    <p className="text-sm font-bold uppercase tracking-widest mb-3 text-white/80">{t("proyecto.pagoContado")}</p>
+                    <p className="text-5xl font-bold text-white">100%</p>
+                    <p className="text-sm mt-2 text-white/80">{t("proyecto.pagoUnico")}</p>
                   </div>
-                  <div className="px-6 py-8 lg:px-8 lg:py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">Beneficio</p>
-                    <p className="text-4xl lg:text-5xl font-bold text-accent">+5%</p>
-                    <p className="text-xs lg:text-sm mt-2 text-white/90">Descuento directo</p>
+                  <div className="px-8 py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
+                    <p className="text-sm font-bold uppercase tracking-widest mb-3 text-white/80">{t("proyecto.descuento")}</p>
+                    <p className="text-5xl font-bold text-accent">{t("proyecto.descuentoValor")}</p>
+                    <p className="text-sm mt-2 text-white/80">{t("proyecto.descuentoDesc")}</p>
                   </div>
-                  <div className="px-6 py-8 lg:px-8 lg:py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">Cierre Rápido</p>
-                    <p className="text-4xl lg:text-5xl font-bold text-white">Inmediato</p>
-                    <p className="text-xs lg:text-sm mt-2 text-white/90">Sin trámites bancarios</p>
-                  </div>
-                  <div className="px-6 py-8 lg:px-8 lg:py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-widest mb-3 text-white/90">Entrega</p>
-                    <p className="text-4xl lg:text-5xl font-bold text-accent">Prioritaria</p>
-                    <p className="text-xs lg:text-sm mt-2 text-white/90">Acceso preferente</p>
+                  <div className="px-8 py-10 text-center text-white hover:bg-white/10 transition-colors duration-300 flex items-center justify-center">
+                    <div>
+                      <p className="text-lg text-white/90 mb-2">💎</p>
+                      <p className="text-lg font-medium text-white">{t("proyecto.pagoContado")}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -363,21 +351,18 @@ const Proyecto = () => {
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-primary via-primary/95 to-primary/90 rounded-2xl p-12 text-center shadow-2xl hover:shadow-lift transition-all duration-300 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,<svg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><g fill='none' fill-rule='evenodd'><g fill='%23ffffff'><polygon points='36 30 0 55 0 9'/><polygon points='6 4 30 29 0 43'/></g></g></svg>')]" />
-            <div className="relative z-10">
-              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                ¿Listo para invertir en tu futuro?
-              </h3>
-              <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-                Contáctanos para conocer más detalles sobre el avance, oportunidades de inversión y planes de financiación disponibles. Nuestro equipo está listo para ayudarte.
-              </p>
-              <a href="/agendar-visita">
-                <button className="px-8 py-4 bg-accent text-primary font-bold rounded-lg hover:bg-accent/90 transition-all duration-300 text-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1">
-                  Agendar Cita
-                </button>
-              </a>
-            </div>
+          <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            <h3 className="text-3xl font-bold text-primary mb-4">
+              {t("proyecto.ctaTitle")} <span className="text-accent">{t("proyecto.ctaTitle2")}</span>
+            </h3>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              {t("proyecto.ctaDesc")}
+            </p>
+            <Link to="/contacto">
+              <button className="px-8 py-4 bg-accent hover:bg-accent/90 text-primary font-bold text-lg rounded-lg transition-all shadow-lg hover:shadow-xl">
+                {t("proyecto.contactarAsesor")}
+              </button>
+            </Link>
           </div>
         </div>
       </section>

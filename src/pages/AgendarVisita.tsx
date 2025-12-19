@@ -3,8 +3,10 @@ import { Calendar, Clock, User, Phone, Mail, MessageCircle, AlertCircle } from "
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const AgendarVisita = () => {
+  const { t, language } = useLanguage();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -19,14 +21,12 @@ const AgendarVisita = () => {
     if (!dateString) return [];
 
     const date = new Date(dateString + "T00:00:00");
-    const dayOfWeek = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const dayOfWeek = date.getDay();
 
-    // Domingo (0) - Cerrado
     if (dayOfWeek === 0) {
       return [];
     }
 
-    // Lunes a Viernes (1-5): 7:00 AM - 5:00 PM
     if (dayOfWeek >= 1 && dayOfWeek <= 5) {
       return [
         { value: "07:00", label: "7:00 AM" },
@@ -43,7 +43,6 @@ const AgendarVisita = () => {
       ];
     }
 
-    // Sábado (6): 7:00 AM - 12:00 PM
     if (dayOfWeek === 6) {
       return [
         { value: "07:00", label: "7:00 AM" },
@@ -61,8 +60,8 @@ const AgendarVisita = () => {
   const getDayName = (dateString: string) => {
     if (!dateString) return "";
     const date = new Date(dateString + "T00:00:00");
-    const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-    return days[date.getDay()];
+    const dayKeys = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+    return t(`agendarVisita.dias.${dayKeys[date.getDay()]}`);
   };
 
   const getScheduleInfo = (dateString: string) => {
@@ -72,11 +71,11 @@ const AgendarVisita = () => {
     const dayOfWeek = date.getDay();
 
     if (dayOfWeek === 0) {
-      return "Domingo - Cerrado";
+      return `${t("agendarVisita.dias.domingo")} - ${t("agendarVisita.cerrado")}`;
     } else if (dayOfWeek >= 1 && dayOfWeek <= 5) {
-      return "Lunes a Viernes - 7:00 a.m. - 5:00 p.m.";
+      return `${t("agendarVisita.lunesViernes")} 7:00 a.m. - 5:00 p.m.`;
     } else if (dayOfWeek === 6) {
-      return "Sábado - 7:00 a.m. - 12:00 p.m.";
+      return `${t("agendarVisita.dias.sabado")} - 7:00 a.m. - 12:00 p.m.`;
     }
     return "";
   };
@@ -86,46 +85,39 @@ const AgendarVisita = () => {
 
     if (!formData.name.trim() || !formData.phone.trim() || !formData.date || !formData.time) {
       toast({
-        title: "Error",
-        description: "Por favor completa todos los campos",
+        title: t("agendarVisita.error"),
+        description: t("agendarVisita.completaCampos"),
         variant: "destructive",
       });
       return;
     }
 
-    // Convertir fecha a formato legible
     const date = new Date(formData.date + "T00:00:00");
-    const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-    const months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-    const dayName = days[date.getDay()];
-    const monthName = months[date.getMonth()];
+    const dayKeys = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+    const monthKeys = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+    
+    const dayName = t(`agendarVisita.dias.${dayKeys[date.getDay()]}`);
+    const monthName = t(`agendarVisita.meses.${monthKeys[date.getMonth()]}`);
     const day = date.getDate();
     const year = date.getFullYear();
-    const formattedDate = `${dayName}, ${day} de ${monthName} de ${year}`;
+    const formattedDate = `${dayName}, ${day} ${language === 'es' ? 'de' : ''} ${monthName} ${language === 'es' ? 'de' : ''} ${year}`;
 
-    // Encontrar la hora seleccionada en formato legible
     const availableHours = getAvailableHours(formData.date);
     const selectedHour = availableHours.find(h => h.value === formData.time);
     const timeLabel = selectedHour ? selectedHour.label : formData.time;
 
     const phoneNumber = "573204637230";
-    const message = `Solicitud de Visita - Venezia Tower House
-
-Nombre: ${formData.name}
-Email: ${formData.email}
-Teléfono: ${formData.phone}
-Fecha: ${formattedDate}
-Hora: ${timeLabel}
-
-¿Podrían confirmar la disponibilidad?`;
+    const message = language === 'es' 
+      ? `Solicitud de Visita - Venezia Tower House\n\nNombre: ${formData.name}\nEmail: ${formData.email}\nTeléfono: ${formData.phone}\nFecha: ${formattedDate}\nHora: ${timeLabel}\n\n¿Podrían confirmar la disponibilidad?`
+      : `Visit Request - Venezia Tower House\n\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nDate: ${formattedDate}\nTime: ${timeLabel}\n\nCould you confirm availability?`;
 
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(url, "_blank");
 
     toast({
-      title: "¡Solicitud enviada!",
-      description: "Te contactaremos pronto para confirmar tu visita",
+      title: t("agendarVisita.solicitudEnviada"),
+      description: t("agendarVisita.teContactaremos"),
     });
 
     setFormData({ name: "", email: "", phone: "", date: "", time: "" });
@@ -136,13 +128,13 @@ Hora: ${timeLabel}
     setFormData({
       ...formData,
       date: selectedDate,
-      time: "", // Reset time when date changes
+      time: "",
     });
 
     const date = new Date(selectedDate + "T00:00:00");
     const dayOfWeek = date.getDay();
     if (dayOfWeek === 0) {
-      setDateError("❌ No estamos disponibles los domingos");
+      setDateError(t("agendarVisita.noDomingos"));
     } else {
       setDateError("");
     }
@@ -175,10 +167,10 @@ Hora: ${timeLabel}
         <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <Calendar className="w-16 h-16 text-accent mx-auto mb-6 animate-pulse-opacity" />
           <h1 className="text-5xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up">
-            Agenda tu <span className="text-accent">Visita</span>
+            {t("agendarVisita.heroTitle1")} <span className="text-accent">{t("agendarVisita.heroTitle2")}</span>
           </h1>
           <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            Descubre tu futuro hogar en persona
+            {t("agendarVisita.heroDesc")}
           </p>
         </div>
       </section>
@@ -192,11 +184,11 @@ Hora: ${timeLabel}
               <div className="space-y-8 animate-slide-in-left">
                 <div>
                   <h2 className="text-4xl font-bold text-primary mb-4">
-                    ¿Qué incluye la visita?
+                    {t("agendarVisita.queIncluye")}
                   </h2>
                   <div className="w-24 h-1 bg-accent mb-6" />
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Nuestros asesores especializados te guiarán en un recorrido personalizado por las instalaciones, amenidades y departamentos modelo.
+                    {t("agendarVisita.queIncluyeDesc")}
                   </p>
                 </div>
 
@@ -206,8 +198,8 @@ Hora: ${timeLabel}
                       <Calendar className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-primary mb-1">Duración</h3>
-                      <p className="text-muted-foreground">Aproximadamente 60 minutos</p>
+                      <h3 className="font-bold text-primary mb-1">{t("agendarVisita.duracion")}</h3>
+                      <p className="text-muted-foreground">{t("agendarVisita.duracionValor")}</p>
                     </div>
                   </div>
 
@@ -216,8 +208,8 @@ Hora: ${timeLabel}
                       <User className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-primary mb-1">Asesoría Personalizada</h3>
-                      <p className="text-muted-foreground">Expertos disponibles para responder tus dudas</p>
+                      <h3 className="font-bold text-primary mb-1">{t("agendarVisita.asesoria")}</h3>
+                      <p className="text-muted-foreground">{t("agendarVisita.asesoriaDesc")}</p>
                     </div>
                   </div>
 
@@ -226,26 +218,26 @@ Hora: ${timeLabel}
                       <MessageCircle className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-primary mb-1">Información Completa</h3>
-                      <p className="text-muted-foreground">Planos, precios y opciones de financiamiento</p>
+                      <h3 className="font-bold text-primary mb-1">{t("agendarVisita.infoCompleta")}</h3>
+                      <p className="text-muted-foreground">{t("agendarVisita.infoCompletaDesc")}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-gradient-to-br from-primary to-primary/80 text-white p-8 rounded-lg shadow-lift">
-                  <h3 className="text-xl font-bold mb-3 text-white">Horarios de Atención</h3>
+                  <h3 className="text-xl font-bold mb-3 text-white">{t("agendarVisita.horariosAtencion")}</h3>
                   <div className="space-y-2">
                     <p className="flex justify-between text-white">
-                      <span>Lunes a Viernes:</span>
+                      <span>{t("agendarVisita.lunesViernes")}</span>
                       <span className="font-medium">7:00 a.m. - 5:00 p.m.</span>
                     </p>
                     <p className="flex justify-between text-white">
-                      <span>Sábados:</span>
+                      <span>{t("agendarVisita.sabados")}</span>
                       <span className="font-medium">7:00 a.m. - 12:00 p.m.</span>
                     </p>
                     <p className="flex justify-between text-white/80">
-                      <span>Domingos y Festivos:</span>
-                      <span className="font-medium">Cerrado</span>
+                      <span>{t("agendarVisita.domingos")}</span>
+                      <span className="font-medium">{t("agendarVisita.cerrado")}</span>
                     </p>
                   </div>
                 </div>
@@ -254,14 +246,14 @@ Hora: ${timeLabel}
               {/* Right Column - Form */}
               <div className="animate-slide-in-right">
                 <div className="bg-muted p-8 lg:p-10 rounded-lg shadow-elegant">
-                  <h3 className="text-2xl font-bold text-primary mb-6">Completa tus datos</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-6">{t("agendarVisita.completaDatos")}</h3>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-primary mb-2">
                         <div className="flex items-center gap-2">
                           <User className="w-4 h-4" />
-                          Nombre completo
+                          {t("agendarVisita.nombreCompleto")}
                         </div>
                       </label>
                       <Input
@@ -270,7 +262,7 @@ Hora: ${timeLabel}
                         type="text"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Tu nombre"
+                        placeholder={t("agendarVisita.tuNombre")}
                         className="bg-background border-border focus:border-accent"
                         required
                       />
@@ -280,7 +272,7 @@ Hora: ${timeLabel}
                       <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">
                         <div className="flex items-center gap-2">
                           <Mail className="w-4 h-4" />
-                          Email
+                          {t("agendarVisita.email")}
                         </div>
                       </label>
                       <Input
@@ -298,7 +290,7 @@ Hora: ${timeLabel}
                       <label htmlFor="phone" className="block text-sm font-medium text-primary mb-2">
                         <div className="flex items-center gap-2">
                           <Phone className="w-4 h-4" />
-                          Teléfono
+                          {t("agendarVisita.telefono")}
                         </div>
                       </label>
                       <Input
@@ -317,7 +309,7 @@ Hora: ${timeLabel}
                       <label htmlFor="date" className="block text-sm font-medium text-primary mb-2">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
-                          Fecha preferida
+                          {t("agendarVisita.fechaPreferida")}
                         </div>
                       </label>
                       <Input
@@ -350,7 +342,7 @@ Hora: ${timeLabel}
                       <label htmlFor="time" className="block text-sm font-medium text-primary mb-2">
                         <div className="flex items-center gap-2">
                           <Clock className="w-4 h-4" />
-                          Hora preferida
+                          {t("agendarVisita.horaPreferida")}
                         </div>
                       </label>
 
@@ -363,7 +355,7 @@ Hora: ${timeLabel}
                           className="w-full px-3 py-2 bg-background border border-border rounded-md focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                           required
                         >
-                          <option value="">Selecciona una hora</option>
+                          <option value="">{t("agendarVisita.seleccionaHora")}</option>
                           {availableHours.map((hour) => (
                             <option key={hour.value} value={hour.value}>
                               {hour.label}
@@ -374,10 +366,10 @@ Hora: ${timeLabel}
                         <div className="w-full px-3 py-3 bg-red-50 border border-red-300 rounded-md">
                           <p className="text-red-700 font-semibold flex items-center gap-2">
                             <AlertCircle className="w-4 h-4" />
-                            No disponible este día
+                            {t("agendarVisita.noDisponible")}
                           </p>
                           <p className="text-sm text-red-600 mt-1">
-                            Por favor, selecciona una fecha entre lunes y sábado
+                            {t("agendarVisita.seleccionaFecha")}
                           </p>
                         </div>
                       )}
@@ -388,11 +380,11 @@ Hora: ${timeLabel}
                       disabled={availableHours.length === 0 || !formData.time}
                       className="w-full bg-accent hover:bg-accent/90 text-primary font-medium shadow-lg text-lg py-6 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Confirmar Visita
+                      {t("agendarVisita.confirmarVisita")}
                     </Button>
 
                     <p className="text-xs text-muted-foreground text-center">
-                      Te contactaremos por WhatsApp para confirmar tu cita
+                      {t("agendarVisita.confirmarWhatsApp")}
                     </p>
                   </form>
                 </div>
@@ -407,22 +399,22 @@ Hora: ${timeLabel}
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-2xl font-bold text-primary mb-4">
-              ¿Prefieres contactarnos directamente?
+              {t("agendarVisita.prefieresDirecto")}
             </h3>
             <p className="text-muted-foreground mb-8">
-              Llámanos o escríbenos por WhatsApp para agendar tu visita
+              {t("agendarVisita.llamaOWhatsApp")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:+573204637230">
                 <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
                   <Phone className="mr-2" />
-                  Llamar Ahora
+                  {t("agendarVisita.llamarAhora")}
                 </Button>
               </a>
               <a href="https://api.whatsapp.com/send/?phone=573204637230&text=Hola%2C+deseo+recibir+informaci%C3%B3n+sobre+el+proyecto+Venezia+Tower+House.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-[#25D366] hover:bg-[#20BA5A] text-white">
+                <Button size="lg" className="bg-accent hover:bg-accent/90 text-primary font-medium shadow-gold">
                   <MessageCircle className="mr-2" />
-                  WhatsApp
+                  {t("agendarVisita.escribirWhatsApp")}
                 </Button>
               </a>
             </div>
