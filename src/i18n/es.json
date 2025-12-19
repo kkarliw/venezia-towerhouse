@@ -338,8 +338,42 @@
     "mensajeVisita": "Hola, me gustaría agendar una visita a Venezia Tower House."
   },
   "seo": {
-    "title": "Venezia Tower House | Apartamentos de Lujo en Cartagena",
-    "description": "Venezia Tower House es un proyecto de apartamentos de lujo en Cartagena, con arquitectura moderna, amenidades premium y una ubicación privilegiada cerca del mar."
+    "home": {
+      "title": "Venezia Tower House | Apartamentos de Lujo en Cartagena",
+      "description": "Venezia Tower House es un proyecto de apartamentos de lujo en Cartagena, con arquitectura moderna, amenidades premium y una ubicación privilegiada cerca del mar."
+    },
+    "proyecto": {
+      "title": "El Proyecto | Venezia Tower House Cartagena",
+      "description": "Descubre Venezia Tower House: 16 niveles, 50 apartamentos exclusivos, arquitectura moderna y ubicación estratégica en Crespo, Cartagena."
+    },
+    "amenidades": {
+      "title": "Amenidades | Venezia Tower House Cartagena",
+      "description": "Piscina, gimnasio, zona BBQ, salón de eventos y más. Conoce todas las amenidades de lujo en Venezia Tower House."
+    },
+    "tipologias": {
+      "title": "Tipologías | Venezia Tower House Cartagena",
+      "description": "Explora 7 diseños de apartamentos únicos desde estudios hasta 3 habitaciones. Encuentra tu espacio ideal en Venezia Tower House."
+    },
+    "ubicacion": {
+      "title": "Ubicación | Venezia Tower House Cartagena",
+      "description": "Ubicado en Crespo, Cartagena. Cerca del aeropuerto, centro histórico, playas y los mejores servicios de la ciudad."
+    },
+    "trayectoria": {
+      "title": "Nuestra Trayectoria | Venezia Tower House Cartagena",
+      "description": "Más de 10 años de experiencia, 150+ unidades entregadas. Conoce la historia y proyectos de Venezia Tower House."
+    },
+    "galeria": {
+      "title": "Galería | Venezia Tower House Cartagena",
+      "description": "Explora imágenes de los apartamentos, amenidades y espacios de Venezia Tower House en Cartagena."
+    },
+    "contacto": {
+      "title": "Contacto | Venezia Tower House Cartagena",
+      "description": "Contáctanos para información sobre precios, disponibilidad y planes de financiación de Venezia Tower House."
+    },
+    "agendarVisita": {
+      "title": "Agendar Visita | Venezia Tower House Cartagena",
+      "description": "Agenda una visita personalizada a Venezia Tower House. Conoce en persona tu futuro hogar en Cartagena."
+    }
   },
   "tipologiaDetail": {
     "volverTipologias": "Volver a Tipologías",
