@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { Globe } from 'lucide-react';
+import { Globe, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const InitialLanguageModal = () => {
@@ -9,17 +9,14 @@ const InitialLanguageModal = () => {
   const { setLanguage } = useLanguage();
 
   useEffect(() => {
-    // Check if user has already selected a language
     const hasSelectedLanguage = localStorage.getItem('venezia-language-selected');
     if (hasSelectedLanguage) return;
 
-    // Detect user's browser language
     const browserLang = navigator.language || (navigator as any).userLanguage;
     const isSpanish = browserLang?.toLowerCase().startsWith('es');
     
     setSuggestedLanguage(isSpanish ? 'es' : 'en');
     
-    // Show modal after a brief delay for smooth UX
     const timer = setTimeout(() => {
       setShowModal(true);
     }, 500);
@@ -37,100 +34,157 @@ const InitialLanguageModal = () => {
   return (
     <AnimatePresence>
       {showModal && (
-        <>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999]"
+            className="absolute inset-0 bg-primary/80 backdrop-blur-md"
+            onClick={() => {}} // Prevent closing on backdrop click
           />
           
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.85, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10000] w-[90%] max-w-lg"
+            exit={{ opacity: 0, scale: 0.85, y: 30 }}
+            transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+            className="relative w-full max-w-md mx-auto"
           >
-            <div className="bg-background rounded-2xl shadow-2xl border border-accent/20 overflow-hidden">
-              {/* Header with gradient */}
-              <div className="bg-gradient-to-r from-primary via-primary/95 to-primary/90 p-8 text-center">
-                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-5">
-                  <Globe className="w-10 h-10 text-accent" />
-                </div>
-                <h2 className="text-2xl font-display font-bold text-white mb-2">
-                  Bienvenido / Welcome
-                </h2>
-                <p className="text-white/80 text-sm">
+            <div className="relative bg-background rounded-3xl shadow-2xl overflow-hidden border border-accent/30">
+              {/* Decorative elements */}
+              <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
+                <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
+              </div>
+
+              {/* Header */}
+              <div className="relative pt-8 pb-6 px-6 sm:px-8 text-center">
+                <motion.div 
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+                  className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-5 relative"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent to-accent/60 rounded-2xl rotate-6" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center">
+                    <Globe className="w-10 h-10 sm:w-12 sm:h-12 text-accent" />
+                  </div>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                    className="absolute -top-1 -right-1"
+                  >
+                    <Sparkles className="w-5 h-5 text-accent" />
+                  </motion.div>
+                </motion.div>
+
+                <motion.h2 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-2"
+                >
+                  ¡Bienvenido! / Welcome!
+                </motion.h2>
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-accent font-semibold text-sm sm:text-base"
+                >
                   Venezia Tower House
-                </p>
+                </motion.p>
               </div>
 
               {/* Content */}
-              <div className="p-8 space-y-6">
-                <div className="text-center">
-                  <p className="text-muted-foreground mb-1">
+              <div className="relative px-6 sm:px-8 pb-8 space-y-6">
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="text-center space-y-1"
+                >
+                  <p className="text-foreground font-medium text-sm sm:text-base">
                     Selecciona tu idioma preferido
                   </p>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-muted-foreground text-xs sm:text-sm">
                     Select your preferred language
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="grid grid-cols-2 gap-3 sm:gap-4"
+                >
                   {/* Spanish Option */}
                   <button
                     onClick={() => handleSelectLanguage('es')}
-                    className={`group relative p-6 rounded-xl border-2 transition-all duration-300 ${
+                    className={`group relative p-4 sm:p-6 rounded-2xl border-2 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${
                       suggestedLanguage === 'es'
-                        ? 'border-accent bg-accent/5 shadow-lg'
-                        : 'border-border hover:border-accent/50 hover:bg-muted/50'
+                        ? 'border-accent bg-accent/10 shadow-lg shadow-accent/20'
+                        : 'border-border hover:border-accent/50 hover:bg-muted/30'
                     }`}
                   >
                     {suggestedLanguage === 'es' && (
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-accent text-accent-foreground text-xs font-semibold rounded-full">
-                        Recomendado
-                      </span>
+                      <motion.span 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-1 bg-accent text-primary text-[10px] sm:text-xs font-bold rounded-full whitespace-nowrap"
+                      >
+                        ✨ Recomendado
+                      </motion.span>
                     )}
-                    <div className="text-4xl mb-3">🇪🇸</div>
-                    <h3 className="font-display font-bold text-foreground text-lg">Español</h3>
-                    <p className="text-muted-foreground text-sm mt-1">Spanish</p>
+                    <div className="text-4xl sm:text-5xl mb-3 filter drop-shadow-sm">🇪🇸</div>
+                    <h3 className="font-display font-bold text-foreground text-base sm:text-lg">Español</h3>
+                    <p className="text-muted-foreground text-xs sm:text-sm mt-0.5">Spanish</p>
                   </button>
 
                   {/* English Option */}
                   <button
                     onClick={() => handleSelectLanguage('en')}
-                    className={`group relative p-6 rounded-xl border-2 transition-all duration-300 ${
+                    className={`group relative p-4 sm:p-6 rounded-2xl border-2 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${
                       suggestedLanguage === 'en'
-                        ? 'border-accent bg-accent/5 shadow-lg'
-                        : 'border-border hover:border-accent/50 hover:bg-muted/50'
+                        ? 'border-accent bg-accent/10 shadow-lg shadow-accent/20'
+                        : 'border-border hover:border-accent/50 hover:bg-muted/30'
                     }`}
                   >
                     {suggestedLanguage === 'en' && (
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-accent text-accent-foreground text-xs font-semibold rounded-full">
-                        Recommended
-                      </span>
+                      <motion.span 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-3 py-1 bg-accent text-primary text-[10px] sm:text-xs font-bold rounded-full whitespace-nowrap"
+                      >
+                        ✨ Recommended
+                      </motion.span>
                     )}
-                    <div className="text-4xl mb-3">🇺🇸</div>
-                    <h3 className="font-display font-bold text-foreground text-lg">English</h3>
-                    <p className="text-muted-foreground text-sm mt-1">Inglés</p>
+                    <div className="text-4xl sm:text-5xl mb-3 filter drop-shadow-sm">🇺🇸</div>
+                    <h3 className="font-display font-bold text-foreground text-base sm:text-lg">English</h3>
+                    <p className="text-muted-foreground text-xs sm:text-sm mt-0.5">Inglés</p>
                   </button>
-                </div>
+                </motion.div>
 
-                <p className="text-xs text-center text-muted-foreground">
-                  Puedes cambiar el idioma en cualquier momento desde el menú.
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                  className="text-[10px] sm:text-xs text-center text-muted-foreground leading-relaxed"
+                >
+                  Puedes cambiar el idioma en cualquier momento desde el menú
                   <br />
-                  You can change the language anytime from the menu.
-                </p>
+                  <span className="text-muted-foreground/70">You can change the language anytime from the menu</span>
+                </motion.p>
               </div>
             </div>
           </motion.div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   );
 };
 
 export default InitialLanguageModal;
+
