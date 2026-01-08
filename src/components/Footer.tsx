@@ -92,7 +92,21 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
-          <p>© {currentYear} Venezia Tower House. {t('footer.derechos')}</p>
+          <p className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
+            <span>© {currentYear} Venezia Tower House. {t('footer.derechos')}</span>
+            <span className="hidden sm:inline">|</span>
+            <button
+              onClick={() => {
+                const message = language === 'en' 
+                  ? "Hello K.A.! I visited the Venezia Tower House website and I'm interested in a quote for a professional website for my business. Could you give me more information about your services?"
+                  : "¡Hola K.A.! Visité el sitio web de Venezia Tower House y me interesa una cotización para un sitio web profesional para mi negocio. ¿Podrías darme más información sobre tus servicios?";
+                window.open(`https://wa.me/573107086902?text=${encodeURIComponent(message)}`, "_blank");
+              }}
+              className="text-accent hover:text-white transition-colors font-display font-medium hover:underline"
+            >
+              {language === 'en' ? 'Developed by' : 'Desarrollado por'} K.A.
+            </button>
+          </p>
         </div>
       </div>
     </footer>
