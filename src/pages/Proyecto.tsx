@@ -325,25 +325,67 @@ const Proyecto = () => {
               </div>
             </div>
 
-            {/* Plan 3: Contado */}
+            {/* Plan 3: Contado - Premium Design */}
             <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="bg-gradient-to-r from-slate-700 to-slate-900 rounded-3xl overflow-hidden shadow-2xl hover:shadow-lift transition-all duration-300 transform hover:-translate-y-2">
-                <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
-                  <div className="px-8 py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-sm font-bold uppercase tracking-widest mb-3 text-white/80">{t("proyecto.pagoContado")}</p>
-                    <p className="text-5xl font-bold text-white">100%</p>
-                    <p className="text-sm mt-2 text-white/80">{t("proyecto.pagoUnico")}</p>
-                  </div>
-                  <div className="px-8 py-10 text-center text-white hover:bg-white/10 transition-colors duration-300">
-                    <p className="text-sm font-bold uppercase tracking-widest mb-3 text-white/80">{t("proyecto.descuento")}</p>
-                    <p className="text-5xl font-bold text-accent">{t("proyecto.descuentoValor")}</p>
-                    <p className="text-sm mt-2 text-white/80">{t("proyecto.descuentoDesc")}</p>
-                  </div>
-                  <div className="px-8 py-10 text-center text-white hover:bg-white/10 transition-colors duration-300 flex items-center justify-center">
-                    <div>
-                      <p className="text-lg text-white/90 mb-2">💎</p>
-                      <p className="text-lg font-medium text-white">{t("proyecto.pagoContado")}</p>
+              <div className="flex justify-center mb-6">
+                <span className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-2 rounded-full text-xs font-bold shadow-lg uppercase tracking-wider">
+                  💎 {t("proyecto.mejorValor")}
+                </span>
+              </div>
+              <div className="relative bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 rounded-3xl overflow-hidden shadow-2xl hover:shadow-lift transition-all duration-300 transform hover:-translate-y-2">
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-400/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" />
+                
+                <div className="relative grid grid-cols-1 md:grid-cols-3 gap-0">
+                  {/* Main Payment */}
+                  <div className="px-8 py-12 text-center text-white border-b md:border-b-0 md:border-r border-white/20 hover:bg-white/10 transition-colors duration-300">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                      <span className="text-3xl">💰</span>
                     </div>
+                    <p className="text-sm font-bold uppercase tracking-widest mb-3 text-white/90">{t("proyecto.pagoContado")}</p>
+                    <p className="text-6xl font-bold text-white mb-2">100%</p>
+                    <p className="text-sm text-white/80">{t("proyecto.pagoUnico")}</p>
+                  </div>
+                  
+                  {/* Discount - Highlighted */}
+                  <div className="px-8 py-12 text-center text-white border-b md:border-b-0 md:border-r border-white/20 bg-white/10 hover:bg-white/20 transition-colors duration-300 relative">
+                    <div className="absolute -top-1 left-1/2 -translate-x-1/2">
+                      <div className="bg-accent text-primary px-4 py-1 rounded-b-lg text-xs font-bold shadow-lg">
+                        ⭐ EXCLUSIVO
+                      </div>
+                    </div>
+                    <div className="w-16 h-16 mx-auto mb-4 bg-accent/30 rounded-full flex items-center justify-center backdrop-blur-sm ring-4 ring-accent/50">
+                      <span className="text-3xl">🎁</span>
+                    </div>
+                    <p className="text-sm font-bold uppercase tracking-widest mb-3 text-accent">{t("proyecto.descuento")}</p>
+                    <p className="text-6xl font-bold text-accent mb-2">{t("proyecto.descuentoValor")}</p>
+                    <p className="text-sm text-white/90 font-medium">{t("proyecto.descuentoDesc")}</p>
+                    <div className="mt-4 inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-xs font-medium backdrop-blur-sm">
+                      ✓ {t("proyecto.ahorroInmediato")}
+                    </div>
+                  </div>
+                  
+                  {/* Benefits */}
+                  <div className="px-8 py-12 text-white hover:bg-white/10 transition-colors duration-300">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                      <span className="text-3xl">✨</span>
+                    </div>
+                    <p className="text-sm font-bold uppercase tracking-widest mb-4 text-white/90 text-center">{t("proyecto.beneficios")}</p>
+                    <ul className="space-y-3 text-sm text-white/90">
+                      <li className="flex items-center gap-2">
+                        <span className="w-5 h-5 bg-accent/30 rounded-full flex items-center justify-center text-accent text-xs">✓</span>
+                        {t("proyecto.sinIntereses")}
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-5 h-5 bg-accent/30 rounded-full flex items-center justify-center text-accent text-xs">✓</span>
+                        {t("proyecto.procesoRapido")}
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-5 h-5 bg-accent/30 rounded-full flex items-center justify-center text-accent text-xs">✓</span>
+                        {t("proyecto.prioridadSeleccion")}
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
