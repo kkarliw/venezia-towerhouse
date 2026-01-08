@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Building2, GraduationCap, Heart, ShoppingBag, Car, Award, Clock, Users, CheckCircle, Bed, Maximize } from "lucide-react";
+import { ArrowRight, MapPin, Building2, GraduationCap, Heart, ShoppingBag, Car, Award, Clock, Users, Bed, Maximize } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion, useInView } from "framer-motion";
+import OptimizedImage from "@/components/OptimizedImage";
 
 const AnimatedSection = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
   const ref = useRef(null);
@@ -237,14 +238,12 @@ const Index = () => {
               transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
               className="relative"
             >
-              <div className="aspect-[4/5] bg-cover bg-center rounded-lg overflow-hidden shadow-elegant border border-accent/20">
-                <img 
-                  src="/images/fachada-01.jpg" 
-                  alt="Venezia Tower House"
-                  className="w-full h-full object-cover hover:scale-105 transition-elegant"
-                  loading="lazy"
-                />
-              </div>
+              <OptimizedImage 
+                src="/images/fachada-01.jpg" 
+                alt="Venezia Tower House"
+                className="w-full h-full object-cover hover:scale-105 transition-elegant"
+                containerClassName="aspect-[4/5] rounded-lg overflow-hidden shadow-elegant border border-accent/20"
+              />
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -294,11 +293,11 @@ const Index = () => {
                     className="bg-background rounded-lg overflow-hidden shadow-elegant border border-accent/20 hover:border-accent/50 hover:shadow-lift"
                   >
                     <div className="aspect-[4/3] overflow-hidden flex items-center justify-center bg-background">
-                      <img 
+                      <OptimizedImage 
                         src={tipo.image} 
                         alt={tipo.name}
                         className="w-full h-full object-contain group-hover:scale-105 transition-elegant"
-                        loading="lazy"
+                        containerClassName="w-full h-full"
                       />
                     </div>
                     <div className="p-3 sm:p-5 min-h-[80px] flex flex-col">
@@ -498,11 +497,11 @@ const Index = () => {
                   transition={{ duration: 0.3 }}
                   className="group relative rounded-lg overflow-hidden shadow-elegant border border-accent/20 hover:border-accent/50 h-64 sm:h-72 hover:shadow-lift"
                 >
-                  <img 
+                  <OptimizedImage 
                     src={amenity.image}
                     alt={amenity.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    loading="lazy"
+                    containerClassName="w-full h-full"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
                   
@@ -585,10 +584,11 @@ const Index = () => {
                     transition={{ duration: 0.3 }}
                     className="group relative rounded-2xl overflow-hidden cursor-pointer h-[320px] sm:h-[380px] lg:h-[450px] hover:shadow-lift"
                   >
-                    <img 
+                    <OptimizedImage 
                       src={proyecto.image}
                       alt={proyecto.name}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      containerClassName="absolute inset-0 w-full h-full"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
                     
@@ -677,11 +677,11 @@ const Index = () => {
                   transition={{ duration: 0.3 }}
                   className="aspect-square rounded-lg overflow-hidden group cursor-pointer"
                 >
-                  <img 
+                  <OptimizedImage 
                     src={image}
                     alt={`${language === 'en' ? 'Gallery' : 'Galería'} ${index + 1}`}
                     className="w-full h-full object-cover group-hover:scale-110 transition-elegant"
-                    loading="lazy"
+                    containerClassName="w-full h-full aspect-square"
                   />
                 </motion.div>
               </StaggerItem>
