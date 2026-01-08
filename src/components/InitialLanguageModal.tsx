@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useLanguage } from '@/i18n/LanguageContext';
+import { useOptionalLanguage } from '@/i18n/LanguageContext';
 import { Globe, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const InitialLanguageModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [suggestedLanguage, setSuggestedLanguage] = useState<'es' | 'en'>('es');
-  const { setLanguage } = useLanguage();
+  const langCtx = useOptionalLanguage();
 
   useEffect(() => {
     const hasSelectedLanguage = localStorage.getItem('venezia-language-selected');
@@ -21,10 +21,22 @@ const InitialLanguageModal = () => {
   }, []);
 
   const handleSelectLanguage = (lang: 'es' | 'en') => {
-    setLanguage(lang);
+    // Prefer context when available, otherwise fall back to localStorage
+    if (langCtx?.setLanguage) {
+      langCtx.setLanguage(lang);
+    } else {
+      localStorage.setItem('venezia-language', lang);
+      document.documentElement.lang = lang;
+    }
+
     localStorage.setItem('venezia-language-selected', 'true');
     localStorage.setItem('venezia-language-modal-seen', 'true');
     setShowModal(false);
+
+    // If context is missing (shouldn't happen), force a reload so the app boots with the saved language
+    if (!langCtx?.setLanguage) {
+      window.location.reload();
+    }
   };
 
   return (

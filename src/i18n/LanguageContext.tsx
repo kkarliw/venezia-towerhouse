@@ -68,3 +68,8 @@ export const useLanguage = () => {
   }
   return context;
 };
+
+// Optional hook to avoid hard crashes in edge-cases (e.g. early boot / isolated renders)
+export const useOptionalLanguage = () => {
+  return useContext(LanguageContext);
+};
